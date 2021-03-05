@@ -1,5 +1,23 @@
 # Piggy
 
+Piggy is a social media for investors to connect through common interest groups, discuss investment opportunities and give financial advice. Users will be able to manage their stocks and cryptocurrency in one place. 
+
+## Project Goal
+
+The main goal is to create a web-based application where people can interact and create groups to talk about specific investments. Part of our goal is to make the application easy to use with a good user experience and user interface. 
+
+## Project Organization 
+
+Methodology
+
+We will use the  Agile software development methodology to manage our project. To maximize the productivity a Scrum process will be adapted so the project manager can create and assign tickets. Have a backlog with possible future features and plan the sprint. Meetings will be held weekly to track the progress of each member.
+
+## Project Setup
+
+Piggy will be developed for the web using React as a front-end framework and Firebase as the database. The first step will be prototyping the app using Sketch to create high-fidelity wireframes. For the UI design standards, we will be using the Material UI guidelines provided by Google. The project will be managed using GitHub.
+
+
+
 ## Technologies
 
 - [GatsbyJS](https://www.gatsbyjs.org/)
@@ -28,3 +46,14 @@ After following the previous steps, navigate to http://localhost:8000 and you sh
 _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool and more in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
 There are more changes that will need to be added to this README.md once we start building more stuff in our platform but this is good for a start.
+
+
+## Work Plan
+<b>Roles in the group</b>
+
+<h6>Project Manager: Ludmyla Almeida</h6>
+The project manager will be responsible for creating and assigning tickets on GitHub, they will also be responsible for the project organization, weekly meetings on Discord, and helping team members to achieve their weekly goals.
+
+<h6>Programmer: Nassika Dabel and Victoria Mom</h6>
+The programmer will be responsible for developing the features, completing the tickets and participating in the meetings. If there is any impediment they must warn the project manager.
+
