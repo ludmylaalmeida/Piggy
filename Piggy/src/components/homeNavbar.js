@@ -1,46 +1,86 @@
 import Grid from "@material-ui/core/Grid"
 import React from "react"
 import {
-  AppBar,
   Box,
   Button,
-  Divider,
-  Drawer,
-  Hidden,
-  IconButton,
-  ListItem,
-  ListItemText,
-  Slide,
-  Toolbar,
-  Typography,
   makeStyles,
+  Hidden,
   useScrollTrigger,
+  Typography,
 } from "@material-ui/core"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
+// import Theme from "./theme.js"
 
 const useStyles = makeStyles(theme => ({
   primaryButton: {
     textTransform: "none",
     width: 131,
-    height: 45,
+    height: 40,
     borderRadius: 5,
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
+    backgroundColor: "#FD6A7E",
+    color: "#fff",
+    marginLeft: theme.spacing(4),
+    verticalAlign: "middle",
+    "&:hover": {
+      backgroundColor: "#FB4369",
+    },
   },
-  '&:hover': {
-    // backgroundColor: theme,
+  logoWrap: {
+    maxHeight: 50,
+    width: 120,
+    [theme.breakpoints.up("sm")]: {
+      width: 100,
+    },
+    [theme.breakpoints.up("md")]: {
+      width: 120,
+    },
   },
-}));
+  textButtons: {
+    textTransform: "none",
+    verticalAlign: "middle",
+    marginLeft: theme.spacing(3),
+    "&:hover": {
+      backgroundColor: "#FFF",
+      color: "#FD6A7E",
+    },
+  },
+}))
 
 export default function HomeNavbar() {
   const classes = useStyles()
   return (
     <div>
-        <img src={PiggyLogo} alt="Logo"/>
-      <Button href="" className={classes.primaryButton}>
-        Log In
-      </Button>
+      <Box pt={1} display="flex">
+        <Box flexGrow={1}>
+          <img className={classes.logoWrap} src={PiggyLogo} alt="Logo" />
+        </Box>
+        <div>
+          <Hidden xsDown>
+            <Box>
+              <Button
+                style={{ fontWeight: 700 }}
+                className={classes.textButtons}
+              >
+                Who we are
+              </Button>
+              <Button
+                style={{ fontWeight: 700 }}
+                className={classes.textButtons}
+              >
+                Log In
+              </Button>
+              <Button
+                href=""
+                style={{ fontWeight: 700 }}
+                size="medium"
+                className={classes.primaryButton}
+              >
+                Sign Up
+              </Button>
+            </Box>
+          </Hidden>
+        </div>
+      </Box>
     </div>
-    
   )
 }
