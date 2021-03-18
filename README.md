@@ -27,7 +27,7 @@ Piggy will be developed for the web using React as a front-end framework and Fir
 
 <h5> 💫 Features - Minimal Viable Product (MVP)</h5>
 <p>The main feature of Piggy is the ability for users to create a profile, follow other users, create or join groups and have a message chat.</p>
-## <ol>List of Features:
+<ol>List of Features:
   <li>Login/Create Account</li>
   <li>Home dashboard</li>
   <li>User Profile</li>
@@ -35,5 +35,12 @@ Piggy will be developed for the web using React as a front-end framework and Fir
    <li>Groups</li>
   <li>Account setting</li>
  </ol>
+ 
+## Roles in the group
+<b>Project Manager:</b> Ludmyla Almeida
+<p>The project manager will be responsible for creating and assigning tickets on GitHub, they will also be responsible for the project organization, weekly meetings on Discord, and helping team members to achieve their weekly goals.</p>
+<b>Programmer:</b>Nassika Dabel and Victoria Mom
+<p>The programmer will be responsible for developing the features, completing the tickets and participating in the meetings. If there is any impediment they must warn the project manager.</p>
+
 
 
