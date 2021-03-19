@@ -1,0 +1,13 @@
+logs
+*.log
+npm-debug.log*
+node_modules/
+.npm
+package-lock.json
+.eslintcache
+.node_repl_history
+*.tgz
+.cache/
+public
+.DS_Store
+.env.development
