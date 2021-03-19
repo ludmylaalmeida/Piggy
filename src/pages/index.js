@@ -1,4 +1,5 @@
 import HomeNavbar from "../components/homeNavbar";
+import HomeHeader from "../components/homeHeader";
 import React from "react";
 
 export default function Index() {
@@ -6,6 +7,7 @@ export default function Index() {
 
     <div>
       <HomeNavbar />
+      <HomeHeader />
     </div>
   )
 }
