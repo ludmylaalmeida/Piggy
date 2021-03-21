@@ -1,5 +1,6 @@
 import Grid from "@material-ui/core/Grid"
 import React from "react"
+import { Link } from "gatsby"
 import {
   Box,
   Button,
@@ -9,7 +10,6 @@ import {
   Typography,
 } from "@material-ui/core"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
-// import Theme from "./theme.js"
 
 const useStyles = makeStyles(theme => ({
   primaryButton: {
@@ -63,20 +63,24 @@ export default function HomeNavbar() {
               >
                 Who we are
               </Button>
-              <Button
-                style={{ fontWeight: 700 }}
-                className={classes.textButtons}
-              >
-                Log In
-              </Button>
-              <Button
-                href=""
-                style={{ fontWeight: 700 }}
-                size="medium"
-                className={classes.primaryButton}
-              >
-                Sign Up
-              </Button>
+              <Link to="/login/">
+                <Button
+                  style={{ fontWeight: 700 }}
+                  className={classes.textButtons}
+                >
+                  Log In
+                </Button>
+              </Link>
+              <Link to="/signup/">
+                <Button
+                  href=""
+                  style={{ fontWeight: 700 }}
+                  size="medium"
+                  className={classes.primaryButton}
+                >
+                  Sign Up
+                </Button>
+              </Link>
             </Box>
           </Hidden>
         </div>
