@@ -18,7 +18,7 @@ import { Link } from "gatsby"
 import { spacing } from "@material-ui/system"
 import EmailInput from "../constants/emailInput"
 import PasswordInput from "../constants/passwordInput"
-import FacebookIcon from '@material-ui/icons/Facebook';
+import FacebookIcon from "@material-ui/icons/Facebook"
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function LoginForm() {
+export default function CreateAccountForm() {
   const [checked, setChecked] = React.useState(true)
 
   const handleChange = event => {
@@ -71,15 +71,16 @@ export default function LoginForm() {
           fontSize="h5.fontSize"
           fontWeight="fontWeightBold"
         >
-          Welcome to Piggy!
+          Create your account
         </Box>
         <Typography variant="subtitle1" gutterBottom>
-          Login to continue using your account.
+          Fill in the required details and click Proceed.
         </Typography>
       </Box>
 
       <form className={classes.root} noValidate autoComplete="on">
         <EmailInput />
+        <PasswordInput />
         <PasswordInput />
       </form>
       <Grid container alignItems="center">
@@ -93,11 +94,6 @@ export default function LoginForm() {
             />
           </FormGroup>
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle2" align="right" display="inline">
-            Forgot password?
-          </Typography>
-        </Grid>
       </Grid>
       <Button
         href=""
@@ -107,39 +103,42 @@ export default function LoginForm() {
         type="submit"
         fullWidth
       >
-        Log In
+        Continue
       </Button>
-      <Typography variant="subtitle2" className={classes.componentMargin} align="center" gutterBottom>
-        Don't have an account?{" "}
-        <Link to="/signup/" color="#FD6A7E">
-          Register
-        </Link>
+      <Typography
+        variant="subtitle2"
+        className={classes.componentMargin}
+        align="center"
+        gutterBottom
+      >
+        By Creating Account, you are automatically accepting all the Terms &
+        Conditions.
       </Typography>
       <div>
         <Divider variant="middle" />
         <Button
-        href=""
-        variant="outlined"
-        style={{ fontWeight: 700 }}
-        size="medium"
-        className={classes.secondaryButton}
-        type="submit"
-        fullWidth
-      >
-        Log In with Google
-      </Button>
-      <Button
-        href=""
-        variant="outlined"
-        style={{ fontWeight: 700 }}
-        size="medium"
-        className={classes.secondaryButton}
-        type="submit"
-        startIcon={<FacebookIcon />}
-        fullWidth
-      >
-        Log In with Facebook
-      </Button>
+          href=""
+          variant="outlined"
+          style={{ fontWeight: 700 }}
+          size="medium"
+          className={classes.secondaryButton}
+          type="submit"
+          fullWidth
+        >
+          Register with Google
+        </Button>
+        <Button
+          href=""
+          variant="outlined"
+          style={{ fontWeight: 700 }}
+          size="medium"
+          className={classes.secondaryButton}
+          type="submit"
+          startIcon={<FacebookIcon />}
+          fullWidth
+        >
+          Register with Facebook
+        </Button>
       </div>
     </div>
   )
