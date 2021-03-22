@@ -5,9 +5,7 @@ import piggy from './Piggy.png'
 export default function homeImage() {
   return (
     <div>
-      <p>
       <img src={piggy} width="800vw" height="550vh"/>
-      </p>
     </div>
   )
 }
