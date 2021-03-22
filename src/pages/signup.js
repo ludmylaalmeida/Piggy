@@ -25,7 +25,7 @@ export default function Signup() {
   return (
     <Container maxWidth="lg">
       <Link to="/">
-        <KeyboardBackspaceRoundedIcon fontSize="large" />
+        <KeyboardBackspaceRoundedIcon fontSize="large" style={{ color: "#222"}}/>
       </Link>
       <div className={classes.containerStyle}>
         <Grid container spacing={3}>
