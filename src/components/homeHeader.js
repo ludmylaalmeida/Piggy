@@ -1,5 +1,5 @@
-import Grid from "@material-ui/core/Grid"
-import React from "react"
+import Grid from "@material-ui/core/Grid";
+import React from "react";
 import {
   Box,
   Button,
@@ -7,26 +7,22 @@ import {
   Hidden,
   useScrollTrigger,
   Typography,
+  TableContainer,
 } from "@material-ui/core"
-import PiggyHomeImage from "../assets/img/home_page_illustration.svg"
 
 const useStyles = makeStyles(theme => ({
   primaryButton: {
     textTransform: "none",
-    width: 200,
-    height: 56,
+    width: 131,
+    height: 40,
     borderRadius: 5,
     backgroundColor: "#FD6A7E",
     color: "#fff",
-    marginLeft: theme.spacing(4),
+    marginLeft: theme.spacing(0),
     verticalAlign: "middle",
     "&:hover": {
       backgroundColor: "#FB4369",
     },
-  },
-  piggyHomeImageWrap: {
-    maxHeight: 1014,
-    width: 676,
   },
 }))
 
@@ -34,27 +30,35 @@ export default function HomeHeader() {
   const classes = useStyles()
   return (
     <div>
-    <h1>Track your investments and connect with others.</h1>
-    <h2>A social media for your investments.</h2>
-      <Box pt={17} display="flex">
-        <Box flexGrow={1}>
-          <img className={classes.piggyHomeImageWrap} src={PiggyHomeImage} alt="piggy bank" />
+    <Grid container spacing={3}>
+      <Grid item xs={12} sm={6}>
+      <Box mt={15}>
+        <TableContainer className={classes.TableContainer}>
+        <Typography variant="h1" gutterBottom>Track your investments and connect with others<Box component="div" display="inline" color="#FB4369">.</Box></Typography>
+        <Typography variant="subtitle1" gutterBottom>A social media for your investments.</Typography>
+          <Box pt={3} display="flex">
+            <div>
+              <Hidden xsDown>
+                <Box>
+                  <Button
+                    href=""
+                    style={{ fontWeight: 700 }}
+                    size="medium"
+                    className={classes.primaryButton}
+                  >
+                    Get Started
+                  </Button>
+                </Box>
+              </Hidden>
+            </div>
+          </Box>
+        </TableContainer>
         </Box>
-        <div>
-          <Hidden xsDown>
-            <Box>
-              <Button
-                href=""
-                style={{ fontWeight: 700 }}
-                size="large"
-                className={classes.primaryButton}
-              >
-                Get Started
-              </Button>
-            </Box>
-          </Hidden>
-        </div>
-      </Box>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TableContainer className={classes.TableContainer}></TableContainer>
+      </Grid>
+    </Grid>
     </div>
   )
 }
