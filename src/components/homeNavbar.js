@@ -1,5 +1,6 @@
 import Grid from "@material-ui/core/Grid"
 import React from "react"
+import { Link } from "gatsby"
 import {
   Box,
   Button,
@@ -9,16 +10,18 @@ import {
   Typography,
 } from "@material-ui/core"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
-// import Theme from "./theme.js"
 
 const useStyles = makeStyles(theme => ({
   primaryButton: {
+    fontFamily: "Lato",
     textTransform: "none",
     width: 131,
     height: 40,
     borderRadius: 5,
     backgroundColor: "#FD6A7E",
     color: "#fff",
+    textDecoration: "none",
+    boxShadow: "none",
     marginLeft: theme.spacing(4),
     verticalAlign: "middle",
     "&:hover": {
@@ -36,12 +39,19 @@ const useStyles = makeStyles(theme => ({
     },
   },
   textButtons: {
+    fontFamily: "Lato",
+    color: "#222",
     textTransform: "none",
     verticalAlign: "middle",
-    marginLeft: theme.spacing(3),
+    textDecoration: "none",
+    boxShadow: "none",
+    marginLeft: theme.spacing(4),
     "&:hover": {
       backgroundColor: "#FFF",
       color: "#FD6A7E",
+    },
+    "&:active": {
+      color: "#222",
     },
   },
 }))
@@ -57,26 +67,31 @@ export default function HomeNavbar() {
         <div>
           <Hidden xsDown>
             <Box>
-              <Button
-                style={{ fontWeight: 700 }}
-                className={classes.textButtons}
-              >
-                Who we are
-              </Button>
-              <Button
-                style={{ fontWeight: 700 }}
-                className={classes.textButtons}
-              >
-                Log In
-              </Button>
-              <Button
-                href=""
-                style={{ fontWeight: 700 }}
-                size="medium"
-                className={classes.primaryButton}
-              >
-                Sign Up
-              </Button>
+            <Link to=""
+                  component="button"
+                  variant="body1"
+                  style={{ fontWeight: 700 }}
+                  className={classes.textButtons}
+                >
+                  Who We Are
+              </Link>
+              <Link to="/login/"
+                  component="button"
+                  variant="body1"
+                  style={{ fontWeight: 700 }}
+                  className={classes.textButtons}
+                >
+                  Log In
+              </Link>
+              <Link to="/signup/" style={{textDecoration: "none"}}>
+                <Button
+                  style={{ fontWeight: 700 }}
+                  size="medium"
+                  className={classes.primaryButton}
+                >
+                  Sign Up
+                </Button>
+              </Link>
             </Box>
           </Hidden>
         </div>
