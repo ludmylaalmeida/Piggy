@@ -1,8 +1,9 @@
 import React from "react"
+import CreateAccountForm from "../components/createAccountForm"
 import { Box, Container, Grid, Hidden, makeStyles } from "@material-ui/core"
 import { Link } from "gatsby"
 import LoginForm from "../components/loginForm"
-import LoginIllustration from "../assets/images/login-illustration.svg"
+import CreateAccountIllustration from "../assets/images/Create-account-illustration.svg"
 import KeyboardBackspaceRoundedIcon from "@material-ui/icons/KeyboardBackspaceRounded"
 
 const useStyles = makeStyles(theme => ({
@@ -19,12 +20,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function About() {
+export default function Signup() {
   const classes = useStyles()
   return (
     <Container maxWidth="lg">
       <Link to="/">
-        <KeyboardBackspaceRoundedIcon fontSize="large" style={{ color: "#222"}} />
+        <KeyboardBackspaceRoundedIcon fontSize="large" style={{ color: "#222"}}/>
       </Link>
       <div className={classes.containerStyle}>
         <Grid container spacing={3}>
@@ -32,7 +33,7 @@ export default function About() {
             <Grid md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
                 <img
-                  src={LoginIllustration}
+                  src={CreateAccountIllustration}
                   className={classes.piggyBankIllustration}
                   alt="Piggy bank"
                 />
@@ -41,7 +42,7 @@ export default function About() {
           </Hidden>
           <Grid item md={6} xs={12}>
             <Box display="flex" alignItems="center" justifyContent="center">
-              <LoginForm />
+              <CreateAccountForm />
             </Box>
           </Grid>
         </Grid>

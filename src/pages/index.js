@@ -3,11 +3,11 @@ import HomeHeader from "../components/homeHeader";
 import Grid from "@material-ui/core/Grid";
 import { Box } from "@material-ui/core";
 import React from "react";
+import { Container } from "@material-ui/core"
 
 export default function Index() {
   return (
-
-    <div>
+    <Container maxWidth="lg">
       <HomeNavbar />
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
@@ -18,6 +18,6 @@ export default function Index() {
         <Grid item xs={12} sm={6}>
       </Grid>
     </Grid>
-    </div>
+    </Container>
   )
 }
