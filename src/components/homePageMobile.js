@@ -1,6 +1,6 @@
 import React from "react"
-import { Button, makeStyles } from "@material-ui/core"
-import HomePageMobile from "../assets/images/piggy-mobile-home"
+import { Box, Button, makeStyles } from "@material-ui/core"
+// import HomePageImage from "../assets/images/piggy-mobile-home.svg"
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -38,25 +38,21 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function homePageMobile() {
+export default function HomePageMobile() {
   const classes = useStyles()
-
   return (
-    <img src={HomePageMobile} width="300" />
-        <Button
-          href=""
-          style={{ fontWeight: 700 }}
-          size="medium"
-          className={classes.primaryButton}
-          type="submit"
-          fullWidth
-        >
-          Log In
-        </Button>
-        <Button
-        href=""
+    <Box>
+      {/* <img src={HomePageImage} width="300" /> */}
+      <Button
+        size="medium"
+        className={classes.primaryButton}
+        type="submit"
+        fullWidth
+      >
+        Log In
+      </Button>
+      <Button
         variant="outlined"
-        style={{ fontWeight: 700 }}
         size="medium"
         className={classes.secondaryButton}
         type="submit"
@@ -64,5 +60,6 @@ export default function homePageMobile() {
       >
         Sign Up
       </Button>
+    </Box>
   )
 }
