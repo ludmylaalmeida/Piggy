@@ -1,5 +1,5 @@
 import React from "react"
-import { InputAdornment, TextField, SvgIcon } from "@material-ui/core"
+import { InputAdornment, TextField, SvgIcon, makeStyles } from "@material-ui/core"
 import { ReactComponent as emailIcon } from "../assets/icons/email.svg"
 
 function EmailIcon() {
@@ -10,7 +10,16 @@ function EmailIcon() {
   )
 }
 
+const useStyles = makeStyles(theme => ({
+ outlineInput: {
+   "& .MuiInputAdornment-root": {
+    alignItems: "flex-end",
+   }
+  },
+}))
+
 export default function EmailInput() {
+  const classes = useStyles()
   return (
     <TextField
       required
@@ -20,7 +29,7 @@ export default function EmailInput() {
       fullWidth
       InputProps={{
         startAdornment: (
-          <InputAdornment position="start">
+          <InputAdornment position="start" className={classes.outlineInput}>
             <EmailIcon />
           </InputAdornment>
         ),
