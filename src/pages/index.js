@@ -1,23 +1,17 @@
-import HomeNavbar from "../components/homeNavbar";
-import HomeHeader from "../components/homeHeader";
-import Grid from "@material-ui/core/Grid";
-import { Box } from "@material-ui/core";
-import React from "react";
-import { Container } from "@material-ui/core"
+import HomeNavbar from "../components/homeNavbar"
+import HomeImage from "../components/homePageMobile"
+import React from "react"
+import { Box, Container, Grid, Hidden } from "@material-ui/core"
+import { HomePageMobile } from "../components/homePageMobile"
+import HomeHeader from "../components/homeHeader"
 
 export default function Index() {
   return (
     <Container maxWidth="lg">
       <HomeNavbar />
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <Box mt={15}>
-            <HomeHeader />
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-      </Grid>
-    </Grid>
+      <Box mt={10}>
+        <HomeHeader />
+      </Box>
     </Container>
   )
 }
