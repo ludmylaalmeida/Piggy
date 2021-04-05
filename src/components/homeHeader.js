@@ -1,12 +1,6 @@
-import { Link } from "gatsby";
-import React from "react";
-import {
-  Box,
-  Button,
-  makeStyles,
-  Hidden,
-  Typography,
-} from "@material-ui/core"
+import { Link } from "gatsby"
+import React from "react"
+import { Box, Button, makeStyles, Hidden, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   primaryButton: {
@@ -23,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   headerTitle: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down("md")]: {
       fontSize: "3em",
     },
   },
@@ -33,12 +27,20 @@ export default function HomeHeader() {
   const classes = useStyles()
   return (
     <div>
-      <Typography variant="h1" gutterBottom className={classes.headerTitle}> Track your investments and connect with others<Box component="div" display="inline" color="#FB4369">.</Box></Typography>
-      <Typography variant="subtitle1" gutterBottom>A social media for your investments.</Typography>
-        <Box pt={3} display="flex">
-          <div>
-            <Hidden xsDown>
-              <Link to="/signup/" style = {{textDecoration: "none"}}>
+      <Typography variant="h1" gutterBottom className={classes.headerTitle}>
+        {" "}
+        Track your investments and connect with others
+        <Box component="div" display="inline" color="#FB4369">
+          .
+        </Box>
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom>
+        A social media for your investments.
+      </Typography>
+      <Box pt={3} display="flex">
+        <div>
+          <Hidden xsDown>
+            <Link to="/signup/" style={{ textDecoration: "none" }}>
               <Box>
                 <Button
                   href=""
@@ -49,10 +51,10 @@ export default function HomeHeader() {
                   Get Started
                 </Button>
               </Box>
-              </Link>
-            </Hidden>
-          </div>
-        </Box>
+            </Link>
+          </Hidden>
+        </div>
+      </Box>
     </div>
   )
 }
