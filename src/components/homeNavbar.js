@@ -1,14 +1,6 @@
-import Grid from "@material-ui/core/Grid"
 import React from "react"
 import { Link } from "gatsby"
-import {
-  Box,
-  Button,
-  makeStyles,
-  Hidden,
-  useScrollTrigger,
-  Typography,
-} from "@material-ui/core"
+import { Box, Button, makeStyles, Hidden, Typography } from "@material-ui/core"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
 
 const useStyles = makeStyles(theme => ({
@@ -67,23 +59,25 @@ export default function HomeNavbar() {
         <div>
           <Hidden xsDown>
             <Box>
-            <Link to=""
-                  component="button"
-                  variant="body1"
-                  style={{ fontWeight: 700 }}
-                  className={classes.textButtons}
-                >
-                  Who We Are
+              <Link
+                to=""
+                component="button"
+                variant="body1"
+                style={{ fontWeight: 700 }}
+                className={classes.textButtons}
+              >
+                Who We Are
               </Link>
-              <Link to="/login/"
-                  component="button"
-                  variant="body1"
-                  style={{ fontWeight: 700 }}
-                  className={classes.textButtons}
-                >
-                  Log In
+              <Link
+                to="/login/"
+                component="button"
+                variant="body1"
+                style={{ fontWeight: 700 }}
+                className={classes.textButtons}
+              >
+                Log In
               </Link>
-              <Link to="/signup/" style={{textDecoration: "none"}}>
+              <Link to="/signup/" style={{ textDecoration: "none" }}>
                 <Button
                   style={{ fontWeight: 700 }}
                   size="medium"
