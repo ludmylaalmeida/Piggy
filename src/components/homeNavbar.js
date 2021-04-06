@@ -1,12 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import {
-  Box,
-  Button,
-  makeStyles,
-  Hidden,
-  Typography,
-} from "@material-ui/core"
+import { Box, Button, makeStyles, Hidden, Typography } from "@material-ui/core"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
 
 const useStyles = makeStyles(theme => ({
