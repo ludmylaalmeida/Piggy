@@ -18,7 +18,7 @@ import { Link } from "gatsby"
 import { spacing } from "@material-ui/system"
 import EmailInput from "../constants/emailInput"
 import PasswordInput from "../constants/passwordInput"
-import FacebookIcon from '@material-ui/icons/Facebook';
+import FacebookIcon from "@material-ui/icons/Facebook"
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -109,7 +109,12 @@ export default function LoginForm() {
       >
         Log In
       </Button>
-      <Typography variant="subtitle2" className={classes.componentMargin} align="center" gutterBottom>
+      <Typography
+        variant="subtitle2"
+        className={classes.componentMargin}
+        align="center"
+        gutterBottom
+      >
         Don't have an account?{" "}
         <Link to="/signup/" color="#FD6A7E">
           Register
@@ -118,28 +123,28 @@ export default function LoginForm() {
       <div>
         <Divider variant="middle" />
         <Button
-        href=""
-        variant="outlined"
-        style={{ fontWeight: 700 }}
-        size="medium"
-        className={classes.secondaryButton}
-        type="submit"
-        fullWidth
-      >
-        Log In with Google
-      </Button>
-      <Button
-        href=""
-        variant="outlined"
-        style={{ fontWeight: 700 }}
-        size="medium"
-        className={classes.secondaryButton}
-        type="submit"
-        startIcon={<FacebookIcon />}
-        fullWidth
-      >
-        Log In with Facebook
-      </Button>
+          href=""
+          variant="outlined"
+          style={{ fontWeight: 700 }}
+          size="medium"
+          className={classes.secondaryButton}
+          type="submit"
+          fullWidth
+        >
+          Log In with Google
+        </Button>
+        <Button
+          href=""
+          variant="outlined"
+          style={{ fontWeight: 700 }}
+          size="medium"
+          className={classes.secondaryButton}
+          type="submit"
+          startIcon={<FacebookIcon />}
+          fullWidth
+        >
+          Log In with Facebook
+        </Button>
       </div>
     </div>
   )
