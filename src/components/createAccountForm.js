@@ -95,16 +95,18 @@ export default function CreateAccountForm() {
           </FormGroup>
         </Grid>
       </Grid>
-      <Button
-        href=""
-        style={{ fontWeight: 700 }}
-        size="medium"
-        className={classes.primaryButton}
-        type="submit"
-        fullWidth
-      >
-        Continue
-      </Button>
+      <Link to="/createProfile/">
+        <Button
+          href=""
+          style={{ fontWeight: 700 }}
+          size="medium"
+          className={classes.primaryButton}
+          type="submit"
+          fullWidth
+        >
+          Continue
+        </Button>
+      </Link>
       <Typography
         variant="subtitle2"
         className={classes.componentMargin}

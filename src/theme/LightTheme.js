@@ -48,11 +48,11 @@ export const LightTheme = responsiveFontSizes(
     },
     subtitle1: {
       fontFamily: "Lato",
-      fontWeight: 600,
+      fontWeight: 400,
     },
     subtitle2: {
       fontFamily: "Lato",
-      fontWeight: 600,
+      fontWeight: 400,
     },
     body1: {
       fontFamily: "Lato",
