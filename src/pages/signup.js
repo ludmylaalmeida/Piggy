@@ -2,7 +2,6 @@ import React from "react"
 import CreateAccountForm from "../components/createAccountForm"
 import { Box, Container, Grid, Hidden, makeStyles } from "@material-ui/core"
 import { Link } from "gatsby"
-import LoginForm from "../components/loginForm"
 import CreateAccountIllustration from "../assets/images/Create-account-illustration.svg"
 import KeyboardBackspaceRoundedIcon from "@material-ui/icons/KeyboardBackspaceRounded"
 
