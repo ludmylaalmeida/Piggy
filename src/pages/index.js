@@ -8,7 +8,7 @@ export default function Index() {
   return (
     <Container maxWidth="lg">
       <HomeNavbar />
-      <Box mt={10}>
+      <Box mt={64}>
         <HomeHeader />
       </Box>
     </Container>
