@@ -93,7 +93,7 @@ export default function DashboardNavbar() {
           </Grid>
           <Grid item xs={1}>
             <Box flexGrow={1}>
-              <div classname={classes.notificationsIcon}>
+              <div className={classes.notificationsIcon}>
                 <img
                   src={NotificationAlertIcon}
                   alt="Notification Alert Icon"

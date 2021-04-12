@@ -15,10 +15,12 @@ import {
   Typography,
 } from "@material-ui/core"
 import { Link } from "gatsby"
-import { spacing } from "@material-ui/system"
 import EmailInput from "../constants/emailInput"
 import PasswordInput from "../constants/passwordInput"
 import FacebookIcon from "@material-ui/icons/Facebook"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fabGoogle } from '@fortawesome/free-solid-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -124,6 +126,7 @@ export default function CreateAccountForm() {
           style={{ fontWeight: 700 }}
           size="medium"
           className={classes.secondaryButton}
+          startIcon={<FontAwesomeIcon icon="fab fa-google"/>}
           type="submit"
           fullWidth
         >

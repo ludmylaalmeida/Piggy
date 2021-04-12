@@ -146,6 +146,7 @@ export default function CreateProfile() {
                     fullWidth
                   />
                 </form>
+                <Link to="/dashboard/">
                 <Button
                   href=""
                   style={{ fontWeight: 700 }}
@@ -156,6 +157,7 @@ export default function CreateProfile() {
                 >
                   Save
                 </Button>
+                </Link>
               </div>
             </Box>
           </Grid>
