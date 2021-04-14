@@ -34,10 +34,8 @@ export default function About() {
           <Hidden xsDown>
             <Grid md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
-                <img
-                  src={LoginIllustration}
+                <LoginIllustration
                   className={classes.piggyBankIllustration}
-                  alt="Piggy bank"
                 />
               </Box>
             </Grid>

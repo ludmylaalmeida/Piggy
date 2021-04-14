@@ -2,38 +2,32 @@ import React from "react"
 import {
   AppBar,
   Toolbar,
+  Divider,
   Box,
-  fade,
-  IconMenu,
+  Button,
   makeStyles,
-  Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Drawer,
-  Divider,
-  Typography,
   Menu,
   MenuIcon,
+  MenuItem,
   Badge,
   IconButton,
-  SvgIcon,
 } from "@material-ui/core"
 import AccountCircle from "@material-ui/icons/AccountCircle"
-import NavbarPath from "../assets/images/path.svg"
 import NotificationIcon from "../assets/images/bell.svg"
-import InboxIcon from "@material-ui/icons/MoveToInbox"
-import MailIcon from "@material-ui/icons/Mail"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
 import InputBase from "@material-ui/core/InputBase"
 import SearchIcon from "@material-ui/icons/Search"
-import NotificationsIcon from "@material-ui/icons/Notifications"
-import MoreIcon from "@material-ui/icons/MoreVert"
 import HomeIcon from "../assets/icons/home-icon.svg"
 import ChatsIcon from "../assets/icons/chat-icon.svg"
 import GroupsIcon from "../assets/icons/groups-icon.svg"
 import SignOutIcon from "../assets/icons/sign-out-icon.svg"
+import { useDownloadMenuStyles } from "@mui-treasury/styles/menu/download"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 
 const drawerWidth = 240
 
@@ -58,10 +52,13 @@ const useStyles = makeStyles(theme => ({
     overflow: "auto",
   },
   // necessary for content to be below app bar
-  // toolbar: theme.mixins.toolbar,
+  toolbar: theme.mixins.toolbar,
   // content: {
   //   flexGrow: 1,
   //   padding: theme.spacing(3),
+  // },
+  // sectionDesktop: {
+  //   marginLeft: 100,
   // },
   logoWrap: {
     maxHeight: 50,
@@ -108,69 +105,92 @@ const useStyles = makeStyles(theme => ({
 
 export default function DashboardNavbar() {
   const classes = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const downloadMenuClasses = useDownloadMenuStyles()
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} elevation={0}>
-        {/* <Toolbar>
-              <div className={classes.sectionDesktop}>
-                {/* <NotificationIcon />
-              <AccountCircle
-                style={{ alignItems: "center" }}
-                color="primary"
-              />
-              <Typography variant="subtitle2">Name</Typography>
-              <NavbarPath /> */}
         <Toolbar>
+          {/* <Box> */}
           <Box>
             <PiggyLogo className={classes.logoWrap} />
           </Box>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          <Box flexGrow={1}>
+            <Box className={classes.search} flexGrow={1}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search for a group or topic"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Box>
+          </Box>
+          <Box>
+            <div className={classes.sectionDesktop}>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge color="primary">
+                  <NotificationIcon />
+                </Badge>
+              </IconButton>
+              
+              <Button
+                className={downloadMenuClasses.button}
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+                style={{ borderColor: "transparent" }}
+              >
+                <AccountCircle
+                  className={downloadMenuClasses.downloadIcon}
+                  style={{ color: "#FD6A7E" }}
+                />
+                <span>Name</span>
+                <ExpandMoreIcon
+                  className={
+                    anchorEl
+                      ? downloadMenuClasses.upIcon
+                      : downloadMenuClasses.downIcon
+                  }
+                  style={{ color: "#FD6A7E" }}
+                />
+              </Button>
+              <Menu
+                id="simple-menu"
+                classes={{ paper: downloadMenuClasses.paper }}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                keepMounted
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Settings</MenuItem>
+              </Menu>
             </div>
-            <InputBase
-              placeholder="Search for a group or topic"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              // aria-controls={menuId}
-              aria-haspopup="true"
-              // onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              // aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              // onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer

@@ -54,7 +54,7 @@ export default function HomeNavbar() {
     <div>
       <Box pt={1} display="flex">
         <Box flexGrow={1}>
-          <img className={classes.logoWrap} src={PiggyLogo} alt="Logo" />
+          <PiggyLogo className={classes.logoWrap} />
         </Box>
         <div>
           <Hidden xsDown>

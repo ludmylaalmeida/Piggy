@@ -1,6 +1,6 @@
 import * as Colors from "../constants/colors"
 import Mazzard from "../assets/fonts/MazzardH-Bold.otf"
-
+import PropTypes from 'prop-types'
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
 
 const mazzard = {
@@ -81,6 +81,22 @@ export const LightTheme = responsiveFontSizes(
           "@font-face": [mazzard],
         },
       },
+      MuiListItem: {
+        root: {
+          "&$focusVisible": {
+            backgroundColor: "#FFF3F4",
+            color: "#FD6A7E",
+            "&:hover": {
+              backgroundColor: "#FD6A7E",
+              color: "#FFF",
+            },
+          },
+          "&$selected": {
+            backgroundColor: "#FFF3F4",
+            color: "#FD6A7E",
+          },
+        },
+      },
     },
     palette: {
       primary: {
@@ -97,6 +113,9 @@ export const LightTheme = responsiveFontSizes(
         light: Colors.ERROR_LIGHT,
         main: Colors.ERROR_MAIN,
         dark: Colors.ERROR_DARK,
+      },
+      action: {
+        selected: Colors.SELECTED,
       },
       warning: {
         light: Colors.WARNING_LIGHT,

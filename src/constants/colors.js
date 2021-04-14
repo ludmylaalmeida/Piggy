@@ -23,6 +23,7 @@ export const TEXT_DIVIDER = "#0000001E"
 
 export const BLACK = "#000"
 export const WHITE = "#fff"
+export const SELECTED = "#FFF3F4"
 
 export const GRAY_50 = "#eeeeee"
 export const GRAY_100 = "#999696"
