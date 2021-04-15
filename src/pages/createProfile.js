@@ -80,10 +80,8 @@ export default function CreateProfile() {
           <Hidden xsDown>
             <Grid md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
-                <img
-                  src={CreateAccountIllustration}
+                <CreateAccountIllustration
                   className={classes.piggyBankIllustration}
-                  alt="Piggy bank"
                 />
               </Box>
             </Grid>
