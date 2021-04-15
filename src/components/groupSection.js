@@ -21,6 +21,12 @@ const useStyles = makeStyles(theme => ({
   containerBackground: {
     backgroundColor: "#fff",
   },
+  divider: {
+    backgroundColor: "#F3F3F3",
+    color: "#CEC8C8",
+    marginLeft: "-30px",
+    marginRight: "-30px",
+  },
   primaryButton: {
     textTransform: "none",
     width: 131,
@@ -36,9 +42,6 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
     },
   },
-  table: {
-    minWidth: 650,
-  },
 }))
 
 const StyledTableCellHeader = withStyles(theme => ({
@@ -53,14 +56,13 @@ const StyledTableCellHeader = withStyles(theme => ({
 const StyledTableCell = withStyles(theme => ({
   root: {
     borderColor: "#F3F3F3",
-    // borderTop: "1px solid #F3F3F3",
     borderCollapse: "separate",
     borderSpacing: "0 5px",
   },
 }))(TableCell)
 
-function createData(name, calories, fat, carbs) {
-  return { name, calories, fat, carbs }
+function createData(name, members, membership, status) {
+  return { name, members, membership, status }
 }
 
 const rows = [
@@ -71,13 +73,13 @@ const rows = [
 export default function GroupSection() {
   const classes = useStyles()
   return (
-    <Container>
+    <Container maxWidth="md">
       <Paper elevation={0}>
         <Box p={4}>
           <Box pb={1}>
             <Typography variant="h6">My Groups</Typography>
           </Box>
-          <Divider style={{backgroundColor: "#F3F3F3", color: "#CEC8C8", marginLeft: "-30px", marginRight: "-30px"}} />
+          <Divider className={classes.divider} />
           <Box mb={4} mt={2}>
             <Button className={classes.primaryButton}>Create Group</Button>
           </Box>
@@ -108,10 +110,10 @@ export default function GroupSection() {
                       {row.name}
                     </StyledTableCell>
                     <StyledTableCell align="left">
-                      {row.calories}
+                      {row.members}
                     </StyledTableCell>
-                    <StyledTableCell align="left">{row.fat}</StyledTableCell>
-                    <StyledTableCell align="left">{row.carbs}</StyledTableCell>
+                    <StyledTableCell align="left">{row.membership}</StyledTableCell>
+                    <StyledTableCell align="left">{row.status}</StyledTableCell>
                   </TableRow>
                 ))}
               </TableBody>

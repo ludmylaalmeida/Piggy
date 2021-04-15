@@ -13,9 +13,11 @@ import {
   Drawer,
   Menu,
   MenuIcon,
+  Hidden,
   MenuItem,
   Badge,
   IconButton,
+  useTheme,
 } from "@material-ui/core"
 import AccountCircle from "@material-ui/icons/AccountCircle"
 import NotificationIcon from "../assets/images/bell.svg"
@@ -29,7 +31,7 @@ import SignOutIcon from "../assets/icons/sign-out-icon.svg"
 import { useDownloadMenuStyles } from "@mui-treasury/styles/menu/download"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -41,8 +43,10 @@ const useStyles = makeStyles(theme => ({
     margin: 0,
   },
   drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
   },
   drawerPaper: {
     width: drawerWidth,
@@ -53,13 +57,9 @@ const useStyles = makeStyles(theme => ({
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
-  // content: {
-  //   flexGrow: 1,
-  //   padding: theme.spacing(3),
-  // },
-  // sectionDesktop: {
-  //   marginLeft: 100,
-  // },
+  sectionDesktop: {
+    marginLeft: 100,
+  },
   logoWrap: {
     maxHeight: 50,
     width: 120,
@@ -106,6 +106,7 @@ const useStyles = makeStyles(theme => ({
 export default function DashboardNavbar() {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const theme = useTheme();
 
   const downloadMenuClasses = useDownloadMenuStyles()
 
@@ -117,11 +118,47 @@ export default function DashboardNavbar() {
     setAnchorEl(null)
   }
 
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  }
+
+  const drawer = (
+    <div className={classes.drawerContainer}>
+    <List>
+      <ListItem button>
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="Home" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <ChatsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Chats" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <GroupsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Groups" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <SignOutIcon />
+        </ListItemIcon>
+        <ListItemText primary="Sign Out" />
+      </ListItem>
+    </List>
+  </div>
+  )
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} elevation={0}>
         <Toolbar>
-          {/* <Box> */}
           <Box>
             <PiggyLogo className={classes.logoWrap} />
           </Box>
@@ -147,7 +184,7 @@ export default function DashboardNavbar() {
                   <NotificationIcon />
                 </Badge>
               </IconButton>
-              
+
               <Button
                 className={downloadMenuClasses.button}
                 aria-controls="simple-menu"
@@ -193,44 +230,38 @@ export default function DashboardNavbar() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        elevation={0}
-      >
-        <Toolbar />
-        <div className={classes.drawerContainer}>
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <ChatsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Chats" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <GroupsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Groups" />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <SignOutIcon />
-              </ListItemIcon>
-              <ListItemText primary="Sign Out" />
-            </ListItem>
-          </List>
-        </div>
-      </Drawer>
+      <Box ml={16}>
+      <Hidden xsDown>
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          classes={{ paper: classes.drawerPaper }}
+          elevation={0}
+        >
+          <Toolbar />
+          {drawer}
+        </Drawer>
+      </Hidden>
+      </Box>
+      <nav className={classes.drawer} aria-label="mailbox folders">
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden smUp implementation="css">
+          <Drawer
+            variant="temporary"
+            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
     </div>
   )
 }
