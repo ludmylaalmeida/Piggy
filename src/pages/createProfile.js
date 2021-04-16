@@ -4,8 +4,10 @@ import {
   Box,
   Button,
   Container,
-  FormGroup,
-  FormControlLabel,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Select,
   makeStyles,
   TextField,
   Grid,
@@ -30,11 +32,14 @@ const useStyles = makeStyles(theme => ({
     margin: "0 auto",
     maxWidth: 2000,
     [theme.breakpoints.up("sm")]: {
-      marginTop: 80,
+      marginTop: 40,
     },
   },
   formContainer: {
     width: 350,
+  },
+  input: {
+    display: 'none',
   },
   primaryButton: {
     marginTop: 30,
@@ -67,9 +72,15 @@ const useStyles = makeStyles(theme => ({
 export default function CreateProfile() {
   const classes = useStyles()
 
+  const [gender, setGender] = React.useState("")
+
+  const handleChange = event => {
+    setGender(event.target.value)
+  }
+
   return (
     <Container maxWidth="lg">
-      <Link to="/signup/">
+      <Link to="/signup/" style={{ textDecoration: "none" }}>
         <KeyboardBackspaceRoundedIcon
           fontSize="large"
           style={{ color: "#222" }}
@@ -78,7 +89,7 @@ export default function CreateProfile() {
       <div className={classes.containerStyle}>
         <Grid container spacing={3}>
           <Hidden xsDown>
-            <Grid md={6}>
+            <Grid item md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
                 <CreateAccountIllustration
                   className={classes.piggyBankIllustration}
@@ -105,9 +116,19 @@ export default function CreateProfile() {
                       style={{ fontSize: 100, alignItems: "center" }}
                       color="primary"
                     />
-                    <Typography variant="subtitle2">
-                      Set Profile Picture
-                    </Typography>
+                    <Grid align="center">
+                    <input
+                      accept="image/*"
+                      className={classes.input}
+                      id="button-file"
+                      type="file"
+                    />
+                    <label htmlFor="button-file">
+                      <Button size="small" component="span">
+                        Set Profile Picture
+                      </Button>
+                    </label>
+                    </Grid>
                   </Grid>
                 </Box>
 
@@ -129,32 +150,38 @@ export default function CreateProfile() {
                     }}
                     fullWidth
                   />
+                  <FormControl fullWidth>
+                    <InputLabel id="gender-select">Gender</InputLabel>
+                    <Select
+                      labelId="gender-select"
+                      id="demo-simple-select"
+                      value={gender}
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={1}>Female</MenuItem>
+                      <MenuItem value={2}>Male</MenuItem>
+                      <MenuItem value={3}>Gender Fluid</MenuItem>
+                      <MenuItem value={4}>Other</MenuItem>
+                    </Select>
+                  </FormControl>
                   <TextField
                     required
                     margin="normal"
-                    id="standard-basic"
-                    placeholder="Gender"
-                    fullWidth
-                  />
-                  <TextField
-                    required
-                    margin="normal"
-                    id="standard-basic"
                     placeholder="Location"
                     fullWidth
                   />
                 </form>
-                <Link to="/dashboard/">
-                <Button
-                  href=""
-                  style={{ fontWeight: 700 }}
-                  size="medium"
-                  className={classes.primaryButton}
-                  type="submit"
-                  fullWidth
-                >
-                  Save
-                </Button>
+                <Link to="/dashboard/" style={{ textDecoration: "none" }}>
+                  <Button
+                    href=""
+                    style={{ fontWeight: 700 }}
+                    size="medium"
+                    className={classes.primaryButton}
+                    type="submit"
+                    fullWidth
+                  >
+                    Save
+                  </Button>
                 </Link>
               </div>
             </Box>

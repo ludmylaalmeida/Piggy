@@ -8,17 +8,14 @@ import {
   FormControlLabel,
   Divider,
   makeStyles,
-  Icon,
-  FormControl,
   Grid,
-  TextField,
   Typography,
 } from "@material-ui/core"
 import { Link } from "gatsby"
-import { spacing } from "@material-ui/system"
 import EmailInput from "../constants/emailInput"
 import PasswordInput from "../constants/passwordInput"
 import FacebookIcon from "@material-ui/icons/Facebook"
+import GoogleIcon from "../assets/icons/google-icon.svg"
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -99,16 +96,18 @@ export default function LoginForm() {
           </Typography>
         </Grid>
       </Grid>
-      <Button
-        href=""
-        style={{ fontWeight: 700 }}
-        size="medium"
-        className={classes.primaryButton}
-        type="submit"
-        fullWidth
-      >
-        Log In
-      </Button>
+      <Link to="/dashboard/" style={{ textDecoration: "none" }}>
+        <Button
+          href=""
+          style={{ fontWeight: 700 }}
+          size="medium"
+          className={classes.primaryButton}
+          type="submit"
+          fullWidth
+        >
+          Log In
+        </Button>
+      </Link>
       <Typography
         variant="subtitle2"
         className={classes.componentMargin}
@@ -116,7 +115,7 @@ export default function LoginForm() {
         gutterBottom
       >
         Don't have an account?{" "}
-        <Link to="/signup/" color="#FD6A7E">
+        <Link to="/signup/" color="#FD6A7E" style={{ textDecoration: "none" }}>
           Register
         </Link>
       </Typography>
@@ -129,6 +128,7 @@ export default function LoginForm() {
           size="medium"
           className={classes.secondaryButton}
           type="submit"
+          startIcon={<GoogleIcon />}
           fullWidth
         >
           Log In with Google

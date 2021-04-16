@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Box, Button, makeStyles, Hidden, Typography } from "@material-ui/core"
+import { Box, Button, makeStyles, Hidden } from "@material-ui/core"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
 
 const useStyles = makeStyles(theme => ({
@@ -63,7 +63,7 @@ export default function HomeNavbar() {
                 to=""
                 component="button"
                 variant="body1"
-                style={{ fontWeight: 700 }}
+                style={{ fontWeight: 700, textDecoration: "none" }}
                 className={classes.textButtons}
               >
                 Who We Are
@@ -72,7 +72,7 @@ export default function HomeNavbar() {
                 to="/login/"
                 component="button"
                 variant="body1"
-                style={{ fontWeight: 700 }}
+                style={{ fontWeight: 700, textDecoration: "none" }}
                 className={classes.textButtons}
               >
                 Log In

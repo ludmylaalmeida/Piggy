@@ -1,49 +1,37 @@
 import * as Colors from "../constants/colors"
-import Mazzard from "../assets/fonts/MazzardH-Bold.otf"
-import PropTypes from 'prop-types'
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
-
-const mazzard = {
-  fontFamily: "Mazzard",
-  fontStyle: "normal",
-  fontWeight: 700,
-  src: `
-    local('Mazzard'),
-    url(${Mazzard}) format(opentype')
-  `,
-}
 
 export const LightTheme = responsiveFontSizes(
   createMuiTheme({
     typography: {
-      fontFamily: "Mazzard",
+      fontFamily: "Lato",
       headerLink: {
-        fontFamily: "Mazzard",
+        fontFamily: "Lato",
       },
       h1: {
-        fontFamily: "Mazzard",
+        fontFamily: "Lato",
         fontWeight: 800,
       },
       h2: {
-        fontFamily: "Mazzard",
+        fontFamily: "Lato",
         fontWeight: 700,
       },
       h3: {
-        fontFamily: "Mazzard",
+        fontFamily: "Lato",
         fontWeight: 700,
       },
       h4: {
-        fontFamily: "Mazzard",
+        fontFamily: "Lato",
         fontWeight: 700,
       },
       h5: {
-        fontFamily: "Mazzard",
+        fontFamily: "Lato",
         fontWeight: 800,
       },
       h6: {
-        // fontFamily: "Mazzard",
+        // fontFamily: "Lato",
         // fontWeight: 400,
-        fontFamily: "Mazzard",
+        fontFamily: "Lato",
         fontWeight: 600,
       },
       subtitle1: {
@@ -78,7 +66,7 @@ export const LightTheme = responsiveFontSizes(
     overrides: {
       MuiCssBaseline: {
         "@global": {
-          "@font-face": [mazzard],
+          "@font-face": "Lato",
         },
       },
       MuiListItem: {
