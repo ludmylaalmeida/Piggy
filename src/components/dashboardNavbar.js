@@ -159,6 +159,15 @@ export default function DashboardNavbar() {
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} elevation={0}>
         <Toolbar>
+            {/* <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton> */}
           <Box>
             <PiggyLogo className={classes.logoWrap} />
           </Box>
@@ -245,7 +254,7 @@ export default function DashboardNavbar() {
       </Box>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Hidden smUp implementation="css">
+        <Hidden xsUp implementation="css">
           <Drawer
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -258,6 +267,7 @@ export default function DashboardNavbar() {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
+          
             {drawer}
           </Drawer>
         </Hidden>
