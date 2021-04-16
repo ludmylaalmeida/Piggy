@@ -4,8 +4,10 @@ import {
   Box,
   Button,
   Container,
-  FormGroup,
-  FormControlLabel,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Select,
   makeStyles,
   TextField,
   Grid,
@@ -66,6 +68,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function CreateProfile() {
   const classes = useStyles()
+
+  const [gender, setGender] = React.useState('');
+
+  const handleChange = (event) => {
+    setGender(event.target.value);
+  };
 
   return (
     <Container maxWidth="lg">
@@ -129,12 +137,20 @@ export default function CreateProfile() {
                     }}
                     fullWidth
                   />
-                  <TextField
-                    required
-                    margin="normal"
-                    placeholder="Gender"
-                    fullWidth
-                  />
+                  <FormControl fullWidth>
+                    <InputLabel id="gender-select">Gender</InputLabel>
+                    <Select
+                      labelId="gender-select"
+                      id="demo-simple-select"
+                      value={gender}
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={1}>Female</MenuItem>
+                      <MenuItem value={2}>Male</MenuItem>
+                      <MenuItem value={3}>Gender Fluid</MenuItem>
+                      <MenuItem value={4}>Other</MenuItem>
+                    </Select>
+                  </FormControl>
                   <TextField
                     required
                     margin="normal"
@@ -143,16 +159,16 @@ export default function CreateProfile() {
                   />
                 </form>
                 <Link to="/dashboard/" style={{ textDecoration: "none" }}>
-                <Button
-                  href=""
-                  style={{ fontWeight: 700 }}
-                  size="medium"
-                  className={classes.primaryButton}
-                  type="submit"
-                  fullWidth
-                >
-                  Save
-                </Button>
+                  <Button
+                    href=""
+                    style={{ fontWeight: 700 }}
+                    size="medium"
+                    className={classes.primaryButton}
+                    type="submit"
+                    fullWidth
+                  >
+                    Save
+                  </Button>
                 </Link>
               </div>
             </Box>
