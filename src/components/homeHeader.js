@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   headerTitle: {
-    fontFamily: "Mazzard",
+    fontFamily: "Lato",
     fontWeight: 600,
     fontSize: "3rem",
     [theme.breakpoints.down("md")]: {

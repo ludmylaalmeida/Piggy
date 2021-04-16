@@ -5,6 +5,9 @@ import {
   Box,
   Button,
   makeStyles,
+  Dialog,
+  DialogTitle,
+  DialogActions,
   List,
   ListItem,
   ListItemIcon,
@@ -17,6 +20,7 @@ import {
   IconButton,
   useTheme,
 } from "@material-ui/core"
+import { Link } from "gatsby"
 import AccountCircle from "@material-ui/icons/AccountCircle"
 import NotificationIcon from "../assets/images/bell.svg"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
@@ -104,7 +108,7 @@ const useStyles = makeStyles(theme => ({
 export default function DashboardNavbar() {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
-  const theme = useTheme();
+  const theme = useTheme()
 
   const downloadMenuClasses = useDownloadMenuStyles()
 
@@ -116,48 +120,81 @@ export default function DashboardNavbar() {
     setAnchorEl(null)
   }
 
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false)
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen(!mobileOpen)
+  }
+
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClickClose = () => {
+    setOpen(false)
   }
 
   const drawer = (
     <div className={classes.drawerContainer}>
-    <List>
-      <ListItem button>
-        <ListItemIcon>
-          <HomeIcon />
-        </ListItemIcon>
-        <ListItemText primary="Home" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <ChatsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Chats" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <GroupsIcon />
-        </ListItemIcon>
-        <ListItemText primary="Groups" />
-      </ListItem>
-      <ListItem button>
-        <ListItemIcon>
-          <SignOutIcon />
-        </ListItemIcon>
-        <ListItemText primary="Sign Out" />
-      </ListItem>
-    </List>
-  </div>
+      <List>
+        <ListItem button>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <ChatsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Chats" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GroupsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Groups" />
+        </ListItem>
+        <ListItem button onClick={handleClickOpen}>
+          <ListItemIcon>
+            <SignOutIcon />
+          </ListItemIcon>
+          <ListItemText primary="Sign Out" />
+        </ListItem>
+        <Dialog
+          open={open}
+          onClose={handleClickClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title" disableTypography>
+            {"Are you sure you want to sign out?"}
+          </DialogTitle>
+          <DialogActions>
+            <Button onClick={handleClickClose} color="primary">
+              No
+            </Button>
+            <Link
+              to="/login/"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              <Button onClick={handleClickClose} color="primary" autoFocus>
+                Yes
+              </Button>
+            </Link>
+          </DialogActions>
+        </Dialog>
+      </List>
+    </div>
   )
 
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} elevation={0}>
         <Toolbar>
-            {/* <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -238,24 +275,24 @@ export default function DashboardNavbar() {
         </Toolbar>
       </AppBar>
       <Box ml={16}>
-      <Hidden xsDown>
-        <Drawer
-          className={classes.drawer}
-          variant="permanent"
-          classes={{ paper: classes.drawerPaper }}
-          elevation={0}
-        >
-          <Toolbar />
-          {drawer}
-        </Drawer>
-      </Hidden>
+        <Hidden xsDown>
+          <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            classes={{ paper: classes.drawerPaper }}
+            elevation={0}
+          >
+            <Toolbar />
+            {drawer}
+          </Drawer>
+        </Hidden>
       </Box>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden xsUp implementation="css">
           <Drawer
             variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+            anchor={theme.direction === "rtl" ? "right" : "left"}
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
@@ -265,7 +302,6 @@ export default function DashboardNavbar() {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-          
             {drawer}
           </Drawer>
         </Hidden>

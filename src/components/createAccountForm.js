@@ -79,18 +79,6 @@ export default function CreateAccountForm() {
         <EmailInput />
         <PasswordInput />
       </form>
-      <Grid container alignItems="center">
-        <Grid item xs={6}>
-          <FormGroup aria-label="position" row>
-            <FormControlLabel
-              value="top"
-              control={<Checkbox color="primary" />}
-              label="Remember me"
-              labelPlacement="end"
-            />
-          </FormGroup>
-        </Grid>
-      </Grid>
       <Link to="/createProfile/" style={{ textDecoration: "none" }}>
         <Button
           href=""

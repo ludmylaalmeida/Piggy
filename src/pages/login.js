@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     margin: "0 auto",
     maxWidth: 2000,
     [theme.breakpoints.up("sm")]: {
-      marginTop: 80,
+      marginTop: 40,
     },
   },
 }))
@@ -30,7 +30,7 @@ export default function About() {
         />
       </Link>
       <div className={classes.containerStyle}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Hidden xsDown>
             <Grid md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
