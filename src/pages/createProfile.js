@@ -38,6 +38,9 @@ const useStyles = makeStyles(theme => ({
   formContainer: {
     width: 350,
   },
+  input: {
+    display: 'none',
+  },
   primaryButton: {
     marginTop: 30,
     textTransform: "none",
@@ -69,11 +72,11 @@ const useStyles = makeStyles(theme => ({
 export default function CreateProfile() {
   const classes = useStyles()
 
-  const [gender, setGender] = React.useState('');
+  const [gender, setGender] = React.useState("")
 
-  const handleChange = (event) => {
-    setGender(event.target.value);
-  };
+  const handleChange = event => {
+    setGender(event.target.value)
+  }
 
   return (
     <Container maxWidth="lg">
@@ -113,9 +116,19 @@ export default function CreateProfile() {
                       style={{ fontSize: 100, alignItems: "center" }}
                       color="primary"
                     />
-                    <Typography variant="subtitle2">
-                      Set Profile Picture
-                    </Typography>
+                    <Grid align="center">
+                    <input
+                      accept="image/*"
+                      className={classes.input}
+                      id="button-file"
+                      type="file"
+                    />
+                    <label htmlFor="button-file">
+                      <Button size="small" component="span">
+                        Set Profile Picture
+                      </Button>
+                    </label>
+                    </Grid>
                   </Grid>
                 </Box>
 
