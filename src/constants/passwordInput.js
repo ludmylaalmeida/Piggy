@@ -33,6 +33,7 @@ export default function PasswordInput() {
       placeholder="Password"
       type="password"
       fullWidth
+      helperText="At least 6 characters"
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">

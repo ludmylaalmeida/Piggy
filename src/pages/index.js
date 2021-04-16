@@ -1,6 +1,6 @@
 import HomeNavbar from "../components/homeNavbar"
 import React from "react"
-import { Box, Container, Grid } from "@material-ui/core"
+import { Box, Container } from "@material-ui/core"
 import HomeHeader from "../components/homeHeader"
 
 export default function Index() {

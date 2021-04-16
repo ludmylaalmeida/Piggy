@@ -8,10 +8,7 @@ import {
   FormControlLabel,
   Divider,
   makeStyles,
-  Icon,
-  FormControl,
   Grid,
-  TextField,
   Typography,
 } from "@material-ui/core"
 import { Link } from "gatsby"

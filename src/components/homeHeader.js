@@ -8,8 +8,8 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core"
-import PiggyImage from "../assets/images/home_page_illustration.svg"
-import PiggyMobile from "../assets/images/piggy_home_mobile.svg"
+import PiggyImage from "../assets/images/home-page-illustration.svg"
+import PiggyMobile from "../assets/images/piggy-bank.svg"
 
 const useStyles = makeStyles(theme => ({
   primaryButton: {
@@ -118,7 +118,7 @@ export default function HomeHeader() {
       </Grid>
       <Hidden xsDown>
         <Grid item md={8} xs={12}>
-          <PiggyImage width={700} />
+          <PiggyImage width={800} />
         </Grid>
       </Hidden>
     </Grid>

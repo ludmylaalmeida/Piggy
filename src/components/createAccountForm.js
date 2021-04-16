@@ -10,12 +10,10 @@ import {
   makeStyles,
   Grid,
   Typography,
-  useTheme,
 } from "@material-ui/core"
 import { Link } from "gatsby"
 import EmailInput from "../constants/emailInput"
 import PasswordInput from "../constants/passwordInput"
-import ConfirmPasswordInput from "../constants/confirmPasswordInput"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import GoogleIcon from "../assets/icons/google-icon.svg"
 
@@ -80,7 +78,6 @@ export default function CreateAccountForm() {
       <form className={classes.root} noValidate autoComplete="on">
         <EmailInput />
         <PasswordInput />
-        <ConfirmPasswordInput />
       </form>
       <Grid container alignItems="center">
         <Grid item xs={6}>

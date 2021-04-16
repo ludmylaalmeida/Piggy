@@ -2,7 +2,6 @@ import React from "react"
 import {
   AppBar,
   Toolbar,
-  Divider,
   Box,
   Button,
   makeStyles,
@@ -12,7 +11,6 @@ import {
   ListItemText,
   Drawer,
   Menu,
-  MenuIcon,
   Hidden,
   MenuItem,
   Badge,
