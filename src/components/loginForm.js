@@ -116,7 +116,7 @@ export default function LoginForm() {
         gutterBottom
       >
         Don't have an account?{" "}
-        <Link to="/signup/" color="#FD6A7E">
+        <Link to="/signup/" color="#FD6A7E" style={{ textDecoration: "none" }}>
           Register
         </Link>
       </Typography>

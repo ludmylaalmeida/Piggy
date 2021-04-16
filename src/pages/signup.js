@@ -23,7 +23,7 @@ export default function Signup() {
   const classes = useStyles()
   return (
     <Container maxWidth="lg">
-      <Link to="/">
+      <Link to="/" style={{ textDecoration: "none" }}>
         <KeyboardBackspaceRoundedIcon
           fontSize="large"
           style={{ color: "#222" }}
@@ -32,7 +32,7 @@ export default function Signup() {
       <div className={classes.containerStyle}>
         <Grid container spacing={3}>
           <Hidden xsDown>
-            <Grid md={6}>
+            <Grid item md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
                 <CreateAccountIllustration
                   className={classes.piggyBankIllustration}

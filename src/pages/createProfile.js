@@ -69,7 +69,7 @@ export default function CreateProfile() {
 
   return (
     <Container maxWidth="lg">
-      <Link to="/signup/">
+      <Link to="/signup/" style={{ textDecoration: "none" }}>
         <KeyboardBackspaceRoundedIcon
           fontSize="large"
           style={{ color: "#222" }}
@@ -78,7 +78,7 @@ export default function CreateProfile() {
       <div className={classes.containerStyle}>
         <Grid container spacing={3}>
           <Hidden xsDown>
-            <Grid md={6}>
+            <Grid item md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
                 <CreateAccountIllustration
                   className={classes.piggyBankIllustration}
@@ -132,19 +132,17 @@ export default function CreateProfile() {
                   <TextField
                     required
                     margin="normal"
-                    id="standard-basic"
                     placeholder="Gender"
                     fullWidth
                   />
                   <TextField
                     required
                     margin="normal"
-                    id="standard-basic"
                     placeholder="Location"
                     fullWidth
                   />
                 </form>
-                <Link to="/dashboard/">
+                <Link to="/dashboard/" style={{ textDecoration: "none" }}>
                 <Button
                   href=""
                   style={{ fontWeight: 700 }}

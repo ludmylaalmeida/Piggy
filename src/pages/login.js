@@ -23,7 +23,7 @@ export default function About() {
   const classes = useStyles()
   return (
     <Container maxWidth="lg">
-      <Link to="/">
+      <Link to="/" style={{ textDecoration: "none" }}>
         <KeyboardBackspaceRoundedIcon
           fontSize="large"
           style={{ color: "#222" }}

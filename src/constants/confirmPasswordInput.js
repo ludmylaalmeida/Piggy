@@ -8,7 +8,7 @@ import LockIcon from "../assets/icons/lock.svg"
 import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
 
-export default function PasswordInput() {
+export default function ConfirmPasswordInput() {
 
   const [values, setValues] = React.useState({
     showPassword: false,
@@ -30,7 +30,7 @@ export default function PasswordInput() {
     <TextField
       required
       margin="normal"
-      placeholder="Password"
+      placeholder="Confirm Password"
       type="password"
       fullWidth
       InputProps={{
