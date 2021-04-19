@@ -1,9 +1,5 @@
 import React from "react"
-import {
-  InputAdornment,
-  TextField,
-  makeStyles,
-} from "@material-ui/core"
+import { InputAdornment, TextField, makeStyles } from "@material-ui/core"
 import EmailIcon from "../assets/icons/email.svg"
 
 const useStyles = makeStyles(theme => ({

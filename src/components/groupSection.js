@@ -111,7 +111,9 @@ export default function GroupSection() {
                     <StyledTableCell align="left">
                       {row.members}
                     </StyledTableCell>
-                    <StyledTableCell align="left">{row.membership}</StyledTableCell>
+                    <StyledTableCell align="left">
+                      {row.membership}
+                    </StyledTableCell>
                     <StyledTableCell align="left">{row.status}</StyledTableCell>
                   </TableRow>
                 ))}
