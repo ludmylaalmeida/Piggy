@@ -6,10 +6,14 @@ import {
   Typography,
   fade,
   Paper,
+  Divider,
   Modal,
+  Button,
 } from "@material-ui/core"
 import PostMedia from "../assets/images/create-post.svg"
 import UserIcon from "../assets/images/user-icon.svg"
+import CloseIcon from "../assets/icons/close.svg"
+import { Link } from "gatsby"
 
 function rand() {
   return Math.round(Math.random() * 20) - 10
@@ -60,7 +64,6 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
   },
-
   postMediaWrap: {
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(3),
@@ -68,6 +71,9 @@ const useStyles = makeStyles(theme => ({
   },
   userIconWrap: {
     marginLeft: theme.spacing(2),
+  },
+  modalUserIconWrap: {
+    marginTop: theme.spacing(2),
   },
   paperWrap: {
     marginLeft: theme.spacing(3),
@@ -77,6 +83,47 @@ const useStyles = makeStyles(theme => ({
       margin: theme.spacing(1),
       width: theme.spacing(80),
       height: theme.spacing(10),
+    },
+  },
+  modalWrap: {
+    position: "absolute",
+    width: 500,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+  dividerWrap: {
+    padding: theme.spacing(0, 0, 0),
+  },
+  modalNameWrap: {
+    fontWeight: 700,
+  },
+  createPostTempSpace: {
+    padding: theme.spacing(15, 0, 0),
+  },
+  createPostTextWrap: {
+    fontSize: 16,
+    fontweight: 800,
+  },
+  addPostMediaButton: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(3),
+  },
+  primaryButton: {
+    textTransform: "none",
+    width: 450,
+    height: 50,
+    borderRadius: 5,
+    fontWeight: 700,
+    marginTop: theme.spacing(1),
+    backgroundColor: "#FD6A7E",
+    color: "#fff",
+    verticalAlign: "middle",
+    "&:hover": {
+      backgroundColor: "#FB4369",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
     },
   },
 }))
@@ -95,9 +142,55 @@ export default function DashboardCreatePost() {
   }
 
   const body = (
-    <div style={modalStyle} className={classes.search}>
-      <h2 id="simple-modal-title">Create Post</h2>
-      <p id="simple-modal-description">What's on your mind?</p>
+    <div style={modalStyle} className={classes.modalWrap}>
+      <Box pt={1} display="flex">
+        <Grid container spacing={2}>
+          <Grid item xs={11}>
+            <h2 className={classes.createPostTextWrap} align="center">
+              Create Post
+            </h2>
+          </Grid>
+          <Grid item xs={1}>
+            <span>
+              <CloseIcon />
+            </span>
+          </Grid>
+        </Grid>
+      </Box>
+      <Divider light className={classes.dividerWrap} />
+      <Box pt={1} display="flex">
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <UserIcon className={classes.modalUserIconWrap} />
+          </Grid>
+          <Grid item xs={7}>
+            <p className={classes.modalNameWrap}>Alisha Woodwards</p>
+            <p>What's on your mind?</p>
+            <div className={classes.createPostTempSpace}></div>
+          </Grid>
+        </Grid>
+      </Box>
+      <Divider light className={classes.dividerWrap} />
+      <Box pt={1} display="flex">
+        <Grid container spacing={2}>
+          <Grid item xs={2} className={classes.addPostMediaButton}>
+            Add
+          </Grid>
+          <Grid item xs={7}>
+            <PostMedia className={classes.postMediaWrap} />
+          </Grid>
+        </Grid>
+      </Box>
+      <Link to="" style={{ textDecoration: "none" }} align="center">
+        <Button
+          href=""
+          style={{ fontWeight: 700 }}
+          size="medium"
+          className={classes.primaryButton}
+        >
+          Post
+        </Button>
+      </Link>
     </div>
   )
 
@@ -124,11 +217,7 @@ export default function DashboardCreatePost() {
                     <Grid container spacing={1}>
                       <Grid item xs={1}>
                         <Box flexGrow={1}>
-                          <img
-                            src={UserIcon}
-                            className={classes.userIconWrap}
-                            alt="User Icon"
-                          />
+                          <UserIcon className={classes.userIconWrap} />
                         </Box>
                       </Grid>
                       <Grid item xs={11}>
@@ -148,11 +237,7 @@ export default function DashboardCreatePost() {
                               {body}
                             </Modal>
                           </div>
-                          <img
-                            src={PostMedia}
-                            className={classes.postMediaWrap}
-                            alt="photo, video, document"
-                          />
+                          <PostMedia className={classes.postMediaWrap} />
                         </Box>
                       </Grid>
                     </Grid>

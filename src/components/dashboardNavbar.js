@@ -1,15 +1,67 @@
-import Grid from "@material-ui/core/Grid"
 import React from "react"
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Button,
+  makeStyles,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Drawer,
+  Menu,
+  Hidden,
+  MenuItem,
+  Badge,
+  IconButton,
+  useTheme,
+} from "@material-ui/core"
+import { Link } from "gatsby"
+import AccountCircle from "@material-ui/icons/AccountCircle"
+import NotificationIcon from "../assets/images/bell.svg"
 import PiggyLogo from "../assets/logo/piggy-logo.svg"
 import InputBase from "@material-ui/core/InputBase"
 import SearchIcon from "@material-ui/icons/Search"
-import { Box, fade, makeStyles } from "@material-ui/core"
-import NotificationAlertIcon from "../assets/images/bell-alert.svg"
-import UserIcon from "../assets/images/user-icon.svg"
-import NavbarPath from "../assets/images/path.svg"
-// import NotificationIcon from "../assets/images/bell.svg";
+import HomeIcon from "../assets/icons/home-icon.svg"
+import ChatsIcon from "../assets/icons/chat-icon.svg"
+import GroupsIcon from "../assets/icons/groups-icon.svg"
+import SignOutIcon from "../assets/icons/sign-out-icon.svg"
+import { useDownloadMenuStyles } from "@mui-treasury/styles/menu/download"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+
+const drawerWidth = 200
 
 const useStyles = makeStyles(theme => ({
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: "#FFF",
+  },
+  root: {
+    display: "flex",
+    margin: 0,
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    border: "none",
+  },
+  drawerContainer: {
+    overflow: "auto",
+  },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
+  sectionDesktop: {
+    marginLeft: 100,
+  },
   logoWrap: {
     maxHeight: 50,
     width: 120,
@@ -23,17 +75,10 @@ const useStyles = makeStyles(theme => ({
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
+    color: "#222",
     backgroundColor: "#F5F6F9",
-    "&:hover": {
-      backgroundColor: fade("#F5F6F9", 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
+    marginLeft: theme.spacing(16),
+    width: 400,
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -62,54 +107,205 @@ const useStyles = makeStyles(theme => ({
 
 export default function DashboardNavbar() {
   const classes = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const theme = useTheme()
+
+  const downloadMenuClasses = useDownloadMenuStyles()
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const [mobileOpen, setMobileOpen] = React.useState(false)
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
+
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClickClose = () => {
+    setOpen(false)
+  }
+
+  const drawer = (
+    <div className={classes.drawerContainer}>
+      <List>
+        <ListItem button>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <ChatsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Chats" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <GroupsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Groups" />
+        </ListItem>
+        <ListItem button onClick={handleClickOpen}>
+          <ListItemIcon>
+            <SignOutIcon />
+          </ListItemIcon>
+          <ListItemText primary="Sign Out" />
+        </ListItem>
+        <Dialog
+          open={open}
+          onClose={handleClickClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title" disableTypography>
+            {"Are you sure you want to sign out?"}
+          </DialogTitle>
+          <DialogActions>
+            <Button onClick={handleClickClose} color="primary">
+              No
+            </Button>
+            <Link
+              to="/login/"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              <Button onClick={handleClickClose} color="primary" autoFocus>
+                Yes
+              </Button>
+            </Link>
+          </DialogActions>
+        </Dialog>
+      </List>
+    </div>
+  )
+
   return (
-    <div>
-      <Box pt={1} display="flex">
-        <Grid container spacing={3}>
-          <Grid item xs={2}>
-            <Box flexGrow={1}>
-              <img className={classes.logoWrap} src={PiggyLogo} alt="Logo" />
-            </Box>
-          </Grid>
-          <Grid item xs={5}>
-            <Box flexGrow={1}>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Search for a group or topic"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ "aria-label": "search" }}
-                />
+    <div className={classes.root}>
+      <AppBar position="fixed" className={classes.appBar} elevation={0}>
+        <Toolbar>
+          {/* <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton> */}
+          <Box>
+            <PiggyLogo className={classes.logoWrap} />
+          </Box>
+          <Box flexGrow={1}>
+            <Box className={classes.search} flexGrow={1}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
               </div>
+              <InputBase
+                placeholder="Search for a group or topic"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </Box>
-          </Grid>
-          <Grid item xs={2}>
-            <Box flexGrow={1}></Box>
-          </Grid>
-          <Grid item xs={1}>
-            <Box flexGrow={1}>
-              <div classname={classes.notificationsIcon}>
-                <img
-                  src={NotificationAlertIcon}
-                  alt="Notification Alert Icon"
+          </Box>
+          <Box>
+            <div className={classes.sectionDesktop}>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge color="primary">
+                  <NotificationIcon />
+                </Badge>
+              </IconButton>
+
+              <Button
+                className={downloadMenuClasses.button}
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+                style={{ borderColor: "transparent" }}
+              >
+                <AccountCircle
+                  className={downloadMenuClasses.downloadIcon}
+                  style={{ color: "#FD6A7E" }}
                 />
-              </div>
-            </Box>
-          </Grid>
-          <Grid item xs={2}>
-            <Box flexGrow={1}>
-              <img src={UserIcon} alt="User Icon" />
-              Alisha
-              <img src={NavbarPath} alt="Path Icon" />
-            </Box>
-          </Grid>
-        </Grid>
+                <span>Name</span>
+                <ExpandMoreIcon
+                  className={
+                    anchorEl
+                      ? downloadMenuClasses.upIcon
+                      : downloadMenuClasses.downIcon
+                  }
+                  style={{ color: "#FD6A7E" }}
+                />
+              </Button>
+              <Menu
+                id="simple-menu"
+                classes={{ paper: downloadMenuClasses.paper }}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                keepMounted
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Settings</MenuItem>
+              </Menu>
+            </div>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Box ml={16}>
+        <Hidden xsDown>
+          <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            classes={{ paper: classes.drawerPaper }}
+            elevation={0}
+          >
+            <Toolbar />
+            {drawer}
+          </Drawer>
+        </Hidden>
       </Box>
+      <nav className={classes.drawer} aria-label="mailbox folders">
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden xsUp implementation="css">
+          <Drawer
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
     </div>
   )
 }

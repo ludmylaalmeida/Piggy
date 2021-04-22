@@ -5,13 +5,11 @@ import {
   Button,
   makeStyles,
   Hidden,
-  useScrollTrigger,
   Grid,
   Typography,
-  TableContainer,
 } from "@material-ui/core"
-import piggyImage from "../assets/images/home_page_illustration.svg"
-import piggyMobile from "../assets/images/piggy_home_mobile.svg"
+import PiggyImage from "../assets/images/home-page-illustration.svg"
+import PiggyMobile from "../assets/images/piggy-bank.svg"
 
 const useStyles = makeStyles(theme => ({
   primaryButton: {
@@ -44,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   headerTitle: {
-    fontFamily: "Mazzard",
+    fontFamily: "Lato",
     fontWeight: 600,
     fontSize: "3rem",
     [theme.breakpoints.down("md")]: {
@@ -64,7 +62,7 @@ export default function HomeHeader() {
     <Grid container alignItems="center">
       <Hidden smUp>
         <Grid item xs={12}>
-          <img src={piggyMobile} width={300} />
+          <PiggyMobile width={300} />
         </Grid>
       </Hidden>
       <Grid item md={4} xs={12}>
@@ -120,7 +118,7 @@ export default function HomeHeader() {
       </Grid>
       <Hidden xsDown>
         <Grid item md={8} xs={12}>
-          <img src={piggyImage} width={700} />
+          <PiggyImage width={800} />
         </Grid>
       </Hidden>
     </Grid>

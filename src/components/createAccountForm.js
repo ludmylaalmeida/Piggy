@@ -8,17 +8,14 @@ import {
   FormControlLabel,
   Divider,
   makeStyles,
-  Icon,
-  FormControl,
   Grid,
-  TextField,
   Typography,
 } from "@material-ui/core"
 import { Link } from "gatsby"
-import { spacing } from "@material-ui/system"
 import EmailInput from "../constants/emailInput"
 import PasswordInput from "../constants/passwordInput"
 import FacebookIcon from "@material-ui/icons/Facebook"
+import GoogleIcon from "../assets/icons/google-icon.svg"
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -81,21 +78,8 @@ export default function CreateAccountForm() {
       <form className={classes.root} noValidate autoComplete="on">
         <EmailInput />
         <PasswordInput />
-        <PasswordInput />
       </form>
-      <Grid container alignItems="center">
-        <Grid item xs={6}>
-          <FormGroup aria-label="position" row>
-            <FormControlLabel
-              value="top"
-              control={<Checkbox color="primary" />}
-              label="Remember me"
-              labelPlacement="end"
-            />
-          </FormGroup>
-        </Grid>
-      </Grid>
-      <Link to="/createProfile/">
+      <Link to="/createProfile/" style={{ textDecoration: "none" }}>
         <Button
           href=""
           style={{ fontWeight: 700 }}
@@ -113,8 +97,10 @@ export default function CreateAccountForm() {
         align="center"
         gutterBottom
       >
-        By Creating Account, you are automatically accepting all the Terms &
-        Conditions.
+        By Creating Account, you are automatically accepting all the{" "}
+        <Link href="#" color="#FD6A7E">
+          Terms & Conditions.
+        </Link>
       </Typography>
       <div>
         <Divider variant="middle" />
@@ -124,6 +110,7 @@ export default function CreateAccountForm() {
           style={{ fontWeight: 700 }}
           size="medium"
           className={classes.secondaryButton}
+          startIcon={<GoogleIcon />}
           type="submit"
           fullWidth
         >

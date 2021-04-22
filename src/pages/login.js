@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     margin: "0 auto",
     maxWidth: 2000,
     [theme.breakpoints.up("sm")]: {
-      marginTop: 80,
+      marginTop: 40,
     },
   },
 }))
@@ -23,22 +23,18 @@ export default function About() {
   const classes = useStyles()
   return (
     <Container maxWidth="lg">
-      <Link to="/">
+      <Link to="/" style={{ textDecoration: "none" }}>
         <KeyboardBackspaceRoundedIcon
           fontSize="large"
           style={{ color: "#222" }}
         />
       </Link>
       <div className={classes.containerStyle}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Hidden xsDown>
             <Grid md={6}>
               <Box display="flex" alignItems="center" justifyContent="center">
-                <img
-                  src={LoginIllustration}
-                  className={classes.piggyBankIllustration}
-                  alt="Piggy bank"
-                />
+                <LoginIllustration className={classes.piggyBankIllustration} />
               </Box>
             </Grid>
           </Hidden>
