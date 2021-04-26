@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     width: 350,
   },
   input: {
-    display: 'none',
+    display: "none",
   },
   primaryButton: {
     marginTop: 30,
@@ -117,28 +117,40 @@ export default function CreateProfile() {
                       color="primary"
                     />
                     <Grid align="center">
-                    <input
-                      accept="image/*"
-                      className={classes.input}
-                      id="button-file"
-                      type="file"
-                    />
-                    <label htmlFor="button-file">
-                      <Button size="small" component="span">
-                        Set Profile Picture
-                      </Button>
-                    </label>
+                      <input
+                        accept="image/*"
+                        className={classes.input}
+                        id="button-file"
+                        type="file"
+                      />
+                      <label htmlFor="button-file">
+                        <Button size="small" component="span">
+                          Set Profile Picture
+                        </Button>
+                      </label>
                     </Grid>
                   </Grid>
                 </Box>
 
                 <form className={classes.root} noValidate autoComplete="on">
-                  <TextField
-                    required
-                    margin="normal"
-                    placeholder="Name"
-                    fullWidth
-                  />
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        required
+                        margin="normal"
+                        placeholder="First Name"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        required
+                        margin="normal"
+                        placeholder="Last Name"
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid>
                   <TextField
                     margin="normal"
                     id="date"
@@ -167,7 +179,7 @@ export default function CreateProfile() {
                   <TextField
                     required
                     margin="normal"
-                    placeholder="Location"
+                    placeholder="Current City"
                     fullWidth
                   />
                 </form>

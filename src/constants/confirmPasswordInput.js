@@ -24,26 +24,14 @@ export default function PasswordInput() {
   return (
     <TextField
       required
-      margin="normal"
-      placeholder="Password"
+      margin="none"
+      placeholder="Confirm Password"
       type="password"
       fullWidth
-      helperText="At least 6 characters"
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
             <LockIcon />
-          </InputAdornment>
-        ),
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-            >
-              {values.showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
           </InputAdornment>
         ),
       }}
