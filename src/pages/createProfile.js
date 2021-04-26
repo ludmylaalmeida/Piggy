@@ -133,12 +133,24 @@ export default function CreateProfile() {
                 </Box>
 
                 <form className={classes.root} noValidate autoComplete="on">
-                  <TextField
-                    required
-                    margin="normal"
-                    placeholder="Name"
-                    fullWidth
-                  />
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        required
+                        margin="normal"
+                        placeholder="First Name"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        required
+                        margin="normal"
+                        placeholder="Last Name"
+                        fullWidth
+                      />
+                    </Grid>
+                  </Grid>
                   <TextField
                     margin="normal"
                     id="date"
@@ -167,7 +179,7 @@ export default function CreateProfile() {
                   <TextField
                     required
                     margin="normal"
-                    placeholder="Location"
+                    placeholder="Current City"
                     fullWidth
                   />
                 </form>

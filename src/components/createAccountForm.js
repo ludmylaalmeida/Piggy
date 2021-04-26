@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core"
 import { Link } from "gatsby"
 import EmailInput from "../constants/emailInput"
+import ConfirmPasswordInput from "../constants/confirmPasswordInput"
 import PasswordInput from "../constants/passwordInput"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import GoogleIcon from "../assets/icons/google-icon.svg"
@@ -68,7 +69,7 @@ export default function CreateAccountForm() {
           fontSize="h5.fontSize"
           fontWeight="fontWeightBold"
         >
-          Create your account
+          Sign up for Piggy
         </Box>
         <Typography variant="subtitle1" gutterBottom>
           Fill in the required details and click Proceed.
@@ -78,6 +79,7 @@ export default function CreateAccountForm() {
       <form className={classes.root} noValidate autoComplete="on">
         <EmailInput />
         <PasswordInput />
+        <ConfirmPasswordInput />
       </form>
       <Link to="/createProfile/" style={{ textDecoration: "none" }}>
         <Button
@@ -97,7 +99,7 @@ export default function CreateAccountForm() {
         align="center"
         gutterBottom
       >
-        By Creating Account, you are automatically accepting all the{" "}
+        By signing up, you are automatically accepting all the{" "}
         <Link href="#" color="#FD6A7E">
           Terms & Conditions.
         </Link>
