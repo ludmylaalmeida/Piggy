@@ -6,6 +6,7 @@ import {
 } from "@material-ui/core"
 import DashboardNavbar from "../components/dashboardNavbar"
 import GroupSection from "../components/groupSection"
+import DashboardCreatePost from "../components/dashboardCreatePost"
 
 export default function Dashboard() {
   return (
@@ -13,12 +14,14 @@ export default function Dashboard() {
       <DashboardNavbar />
       <Hidden smDown>
         <Box mt={16} ml={16}>
-          <GroupSection />
+          {/* <GroupSection /> */}
+          <DashboardCreatePost />
         </Box>
       </Hidden>
       <Hidden smUp>
         <Box mt={16}>
-          <GroupSection />
+          {/* <GroupSection /> */}
+          <DashboardCreatePost />
         </Box>
       </Hidden>
     </Container>
