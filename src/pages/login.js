@@ -44,11 +44,7 @@ export default function About() {
             </Hidden>
             <Grid item md={6} xs={12}>
               <Box display="flex" alignItems="center" justifyContent="center">
-<<<<<<< HEAD
                 <LoginForm />
-=======
-                <LoginIllustration className={classes.piggyBankIllustration} />
->>>>>>> 1e0749cfa37544992b62cee0c3c44b2fad6ea8f2
               </Box>
             </Grid>
           </Grid>
