@@ -1,4 +1,4 @@
-import React, { useState} from "react"
+import React, { useRef, useState} from "react"
 import "@fontsource/lato"
 import {
   Box,
@@ -14,11 +14,12 @@ import {
   Typography,
   Hidden,
 } from "@material-ui/core"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import CreateAccountIllustration from "../assets/images/Create-account-illustration.svg"
 import KeyboardBackspaceRoundedIcon from "@material-ui/icons/KeyboardBackspaceRounded"
 import AccountCircle from "@material-ui/icons/AccountCircle"
-import firebase from "../services/firebase"
+import { useAuth } from "../context/AuthContext"
+import { Alert } from '@material-ui/lab'
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -133,16 +134,6 @@ export default function CreateProfile() {
                 </Box>
 
                 <form className={classes.root} noValidate autoComplete="on">
-<<<<<<< HEAD
-                  <TextField
-                    required
-                    margin="normal"
-                    placeholder="Name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    fullWidth
-                  />
-=======
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField
@@ -161,7 +152,6 @@ export default function CreateProfile() {
                       />
                     </Grid>
                   </Grid>
->>>>>>> 1e0749cfa37544992b62cee0c3c44b2fad6ea8f2
                   <TextField
                     margin="normal"
                     id="date"
@@ -192,13 +182,7 @@ export default function CreateProfile() {
                   <TextField
                     required
                     margin="normal"
-<<<<<<< HEAD
-                    placeholder="Location"
-                    value={location}
-                    onChange={e => setLocation(e.target.value)}
-=======
                     placeholder="Current City"
->>>>>>> 1e0749cfa37544992b62cee0c3c44b2fad6ea8f2
                     fullWidth
                   />
                 </form>
