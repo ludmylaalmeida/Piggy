@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Lato",
     fontWeight: 600,
     fontSize: "3rem",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: "2em",
     },
   },

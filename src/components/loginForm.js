@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useState } from "react"
 import "@fontsource/lato"
 import {
   Box,
@@ -7,15 +7,23 @@ import {
   FormGroup,
   FormControlLabel,
   Divider,
-  makeStyles,
   Grid,
   Typography,
+  InputAdornment,
+  TextField,
+  FormControl,
+  IconButton,
+  makeStyles,
 } from "@material-ui/core"
-import { Link } from "gatsby"
-import EmailInput from "../constants/emailInput"
-import PasswordInput from "../constants/passwordInput"
+import { Link, navigate } from "gatsby"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import GoogleIcon from "../assets/icons/google-icon.svg"
+import LockIcon from "../assets/icons/lock.svg"
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
+import EmailIcon from "../assets/icons/email.svg"
+import { useAuth } from "../context/AuthContext"
+import { Alert } from "@material-ui/lab"
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -24,6 +32,11 @@ const useStyles = makeStyles(theme => ({
   },
   formContainer: {
     width: 350,
+  },
+  outlineInput: {
+    "& .MuiInputAdornment-root": {
+      alignItems: "flex-end",
+    },
   },
   primaryButton: {
     marginTop: 30,
@@ -54,11 +67,35 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function LoginForm() {
-  const [checked, setChecked] = React.useState(true)
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  const handleChange = event => {
-    setChecked(event.target.checked)
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    try {
+      setError("")
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value)
+      navigate("/dashboard")
+    } catch {
+      setError("Failed to log in")
+    }
+    setError("")
+
+    setLoading(false)
   }
+
+  const [password, setPassword] = useRef("")
+  const [email, setEmail] = useRef("")
+
+  const [values, setValues] = React.useRef({
+    showPassword: false,
+  })
+
   const classes = useStyles()
   return (
     <div className={classes.formContainer}>
@@ -75,18 +112,69 @@ export default function LoginForm() {
         </Typography>
       </Box>
 
-      <form className={classes.root} noValidate autoComplete="on">
-        <EmailInput />
-        <PasswordInput />
-      </form>
-      <Grid container alignItems="center">
+      {error && <Alert severity="error">{error}</Alert>}
+      <form
+        className={classes.root}
+        noValidate
+        autoComplete="on"
+        onSubmit={handleSubmit}
+      >
+        <FormControl fullWidth>
+          <TextField
+            required
+            margin="normal"
+            placeholder="Email"
+            value={email}
+            inputRef={emailRef}
+            fullWidth
+            InputProps={{
+              startAdornment: (
+                <InputAdornment
+                  position="start"
+                  className={classes.outlineInput}
+                >
+                  <EmailIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            required
+            margin="normal"
+            placeholder="Password"
+            type="password"
+            value={password}
+            inputRef={passwordRef}
+            fullWidth
+            helperText="At least 6 characters"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <LockIcon />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    // onClick={handleClickShowPassword}
+                    // onMouseDown={handleMouseDownPassword}
+                  >
+                    {/* {values.showPassword ? <Visibility /> : <VisibilityOff />} */}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+          <Grid container alignItems="center">
         <Grid item xs={6}>
           <FormGroup aria-label="position" row>
             <FormControlLabel
-              value="top"
+              // value={checked}
               control={<Checkbox color="primary" />}
               label="Remember me"
               labelPlacement="end"
+              // onChange={e => setChecked(e.target.checked)}
             />
           </FormGroup>
         </Grid>
@@ -96,18 +184,21 @@ export default function LoginForm() {
           </Typography>
         </Grid>
       </Grid>
-      <Link to="/dashboard/" style={{ textDecoration: "none" }}>
-        <Button
-          href=""
-          style={{ fontWeight: 700 }}
-          size="medium"
-          className={classes.primaryButton}
-          type="submit"
-          fullWidth
-        >
-          Log In
-        </Button>
-      </Link>
+      {/* <Link to="/dashboard/" style={{ textDecoration: "none" }}> */}
+      <Button
+        href=""
+        style={{ fontWeight: 700 }}
+        size="medium"
+        className={classes.primaryButton}
+        type="submit"
+        disabled={loading}
+        fullWidth
+      >
+        Log In
+      </Button>
+      {/* </Link> */}
+        </FormControl>
+      </form>
       <Typography
         variant="subtitle2"
         className={classes.componentMargin}
