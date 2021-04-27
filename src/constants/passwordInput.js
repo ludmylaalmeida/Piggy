@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   TextField,
   IconButton,
@@ -9,6 +9,8 @@ import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
 
 export default function PasswordInput() {
+
+  const [password, setPassword] = useState('')
 
   const [values, setValues] = React.useState({
     showPassword: false,
@@ -32,6 +34,8 @@ export default function PasswordInput() {
       margin="normal"
       placeholder="Password"
       type="password"
+      value={password}
+      onChange={e => setPassword(e.target.value)}
       fullWidth
       helperText="At least 6 characters"
       InputProps={{

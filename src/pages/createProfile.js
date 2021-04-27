@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState} from "react"
 import "@fontsource/lato"
 import {
   Box,
@@ -18,6 +18,7 @@ import { Link } from "gatsby"
 import CreateAccountIllustration from "../assets/images/Create-account-illustration.svg"
 import KeyboardBackspaceRoundedIcon from "@material-ui/icons/KeyboardBackspaceRounded"
 import AccountCircle from "@material-ui/icons/AccountCircle"
+import firebase from "../services/firebase"
 
 const useStyles = makeStyles(theme => ({
   componentMargin: {
@@ -72,11 +73,10 @@ const useStyles = makeStyles(theme => ({
 export default function CreateProfile() {
   const classes = useStyles()
 
-  const [gender, setGender] = React.useState("")
-
-  const handleChange = event => {
-    setGender(event.target.value)
-  }
+  const [name, setName] = useState("")
+  const [birthday, setBirthday] = useState("")
+  const [gender, setGender] = useState("")
+  const [location, setLocation] = useState("")
 
   return (
     <Container maxWidth="lg">
@@ -137,6 +137,8 @@ export default function CreateProfile() {
                     required
                     margin="normal"
                     placeholder="Name"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                     fullWidth
                   />
                   <TextField
@@ -144,6 +146,8 @@ export default function CreateProfile() {
                     id="date"
                     label="Birthday"
                     type="date"
+                    value={birthday}
+                    onChange={e => setBirthday(e.target.value)}
                     className={classes.textField}
                     InputLabelProps={{
                       shrink: true,
@@ -156,7 +160,7 @@ export default function CreateProfile() {
                       labelId="gender-select"
                       id="demo-simple-select"
                       value={gender}
-                      onChange={handleChange}
+                      onChange={e => setGender(e.target.value)}
                     >
                       <MenuItem value={1}>Female</MenuItem>
                       <MenuItem value={2}>Male</MenuItem>
@@ -168,6 +172,8 @@ export default function CreateProfile() {
                     required
                     margin="normal"
                     placeholder="Location"
+                    value={location}
+                    onChange={e => setLocation(e.target.value)}
                     fullWidth
                   />
                 </form>
@@ -178,6 +184,7 @@ export default function CreateProfile() {
                     size="medium"
                     className={classes.primaryButton}
                     type="submit"
+                    // onClick={Register}
                     fullWidth
                   >
                     Save

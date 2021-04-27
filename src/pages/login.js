@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import LoginForm from "../components/loginForm"
 import LoginIllustration from "../assets/images/login-illustration.svg"
 import KeyboardBackspaceRoundedIcon from "@material-ui/icons/KeyboardBackspaceRounded"
+import { AuthProvider } from "../context/AuthContext"
 
 const useStyles = makeStyles(theme => ({
   piggyBankIllustration: {
@@ -22,31 +23,33 @@ const useStyles = makeStyles(theme => ({
 export default function About() {
   const classes = useStyles()
   return (
-    <Container maxWidth="lg">
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <KeyboardBackspaceRoundedIcon
-          fontSize="large"
-          style={{ color: "#222" }}
-        />
-      </Link>
-      <div className={classes.containerStyle}>
-        <Grid container spacing={2}>
-          <Hidden xsDown>
-            <Grid md={6}>
+    <AuthProvider>
+      <Container maxWidth="lg">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <KeyboardBackspaceRoundedIcon
+            fontSize="large"
+            style={{ color: "#222" }}
+          />
+        </Link>
+        <div className={classes.containerStyle}>
+          <Grid container spacing={2}>
+            <Hidden xsDown>
+              <Grid md={6}>
+                <Box display="flex" alignItems="center" justifyContent="center">
+                  <LoginIllustration
+                    className={classes.piggyBankIllustration}
+                  />
+                </Box>
+              </Grid>
+            </Hidden>
+            <Grid item md={6} xs={12}>
               <Box display="flex" alignItems="center" justifyContent="center">
-                <LoginIllustration
-                  className={classes.piggyBankIllustration}
-                />
+                <LoginForm />
               </Box>
             </Grid>
-          </Hidden>
-          <Grid item md={6} xs={12}>
-            <Box display="flex" alignItems="center" justifyContent="center">
-              <LoginForm />
-            </Box>
           </Grid>
-        </Grid>
-      </div>
-    </Container>
+        </div>
+      </Container>
+    </AuthProvider>
   )
 }

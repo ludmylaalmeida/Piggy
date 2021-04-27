@@ -2,7 +2,6 @@ import React from "react"
 import {
   Box,
   Container,
-  makeStyles,
   Hidden,
 } from "@material-ui/core"
 import DashboardNavbar from "../components/dashboardNavbar"

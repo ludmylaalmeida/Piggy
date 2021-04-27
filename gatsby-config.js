@@ -14,6 +14,6 @@ module.exports = {
           include: /assets/ // See below to configure properly
         }
       }
-    }
+    },
   ],
 }

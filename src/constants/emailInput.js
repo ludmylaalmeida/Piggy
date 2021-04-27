@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   InputAdornment,
   TextField,
@@ -16,11 +16,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function EmailInput() {
   const classes = useStyles()
+
+  const [email, setEmail] = useState('')
+
   return (
     <TextField
       required
       margin="normal"
       placeholder="Email"
+      value={email}
+      onChange={e => setEmail(e.target.value)}
       fullWidth
       InputProps={{
         startAdornment: (
