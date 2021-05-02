@@ -14,14 +14,14 @@ export default function Dashboard() {
       <DashboardNavbar />
       <Hidden smDown>
         <Box mt={16} ml={16}>
-          {/* <GroupSection /> */}
-          <DashboardCreatePost />
+          <GroupSection />
+          {/* <DashboardCreatePost /> */}
         </Box>
       </Hidden>
       <Hidden smUp>
         <Box mt={16}>
           {/* <GroupSection /> */}
-          <DashboardCreatePost />
+          {/* <DashboardCreatePost /> */}
         </Box>
       </Hidden>
     </Container>
