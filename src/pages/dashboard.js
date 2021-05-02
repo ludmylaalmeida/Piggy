@@ -7,6 +7,7 @@ import {
 import DashboardNavbar from "../components/dashboardNavbar"
 import GroupSection from "../components/groupSection"
 import DashboardCreatePost from "../components/dashboardCreatePost"
+import UserProfile from "../components/userProfile"
 
 export default function Dashboard() {
   return (
@@ -14,7 +15,8 @@ export default function Dashboard() {
       <DashboardNavbar />
       <Hidden smDown>
         <Box mt={16} ml={16}>
-          <GroupSection />
+          <UserProfile/>
+          {/* <GroupSection /> */}
           {/* <DashboardCreatePost /> */}
         </Box>
       </Hidden>
