@@ -34,7 +34,7 @@ export default function About() {
         <div className={classes.containerStyle}>
           <Grid container spacing={2}>
             <Hidden xsDown>
-              <Grid md={6}>
+              <Grid item md={6}>
                 <Box display="flex" alignItems="center" justifyContent="center">
                   <LoginIllustration
                     className={classes.piggyBankIllustration}

@@ -12,13 +12,6 @@ import {
 import AccountIcon from "@material-ui/icons/AccountCircle"
 import EditBtn from "../assets/icons/edit-button.svg"
 import { Row, Item } from "@mui-treasury/components/flex"
-import { usePopularInfoStyles } from "@mui-treasury/styles/info/popular"
-import {
-  Info,
-  InfoTitle,
-  InfoSubtitle,
-  InfoCaption,
-} from "@mui-treasury/components/info"
 import Avatar from "@material-ui/core/Avatar"
 
 const useStyles = makeStyles(theme => ({
