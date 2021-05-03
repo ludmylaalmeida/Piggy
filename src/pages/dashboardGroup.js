@@ -1,8 +1,9 @@
 import React from "react"
 import {
+  Box,
+  Container,
   AppBar,
   Toolbar,
-  Box,
   Button,
   makeStyles,
   Dialog,
@@ -32,10 +33,7 @@ import GroupsIcon from "../assets/icons/groups-icon.svg"
 import SignOutIcon from "../assets/icons/sign-out-icon.svg"
 import { useDownloadMenuStyles } from "@mui-treasury/styles/menu/download"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
-import { Route, Switch, withRouter, useHistory } from "react-router-dom"
-import GroupSection from "../components/groupSection"
-import DashboardCreatePost from "../components/dashboardCreatePost"
-import UserProfile from "../components/userProfile"
+import GroupTab from "../components/groupSection"
 
 const drawerWidth = 200
 
@@ -109,7 +107,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function DashboardNavbar() {
+export default function DashboardGroup() {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const theme = useTheme()
@@ -140,68 +138,65 @@ export default function DashboardNavbar() {
     setOpen(false)
   }
 
-  // history
-  let history = useHistory()
-  function openHome() {
-    history.push("/DashboardCreatePost");
-  } 
-
   const drawer = (
-    <div className={classes.drawerContainer}>
-      <List>
-        <ListItem button onClick={openHome}>
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <ChatsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Chats" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <GroupsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Groups" />
-        </ListItem>
-        <ListItem button onClick={handleClickOpen}>
-          <ListItemIcon>
-            <SignOutIcon />
-          </ListItemIcon>
-          <ListItemText primary="Sign Out" />
-        </ListItem>
-        <Dialog
-          open={open}
-          onClose={handleClickClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title" disableTypography>
-            {"Are you sure you want to sign out?"}
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClickClose} color="primary">
-              No
+  <div className={classes.drawerContainer}>
+    <List>
+        <Link to="/dashboard" style={{ textDecoration: 'none', color: "#222" }}>
+            <ListItem button>
+                <ListItemIcon>
+                <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+            </ListItem>
+      </Link>
+      <ListItem button>
+        <ListItemIcon>
+          <ChatsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Chats" />
+      </ListItem>
+      <ListItem button>
+        <ListItemIcon>
+          <GroupsIcon />
+        </ListItemIcon>
+        <ListItemText primary="Groups" />
+      </ListItem>
+      <ListItem button onClick={handleClickOpen}>
+        <ListItemIcon>
+          <SignOutIcon />
+        </ListItemIcon>
+        <ListItemText primary="Sign Out" />
+      </ListItem>
+      <Dialog
+        open={open}
+        onClose={handleClickClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title" disableTypography>
+          {"Are you sure you want to sign out?"}
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClickClose} color="primary">
+            No
+          </Button>
+          <Link
+            to="/login/"
+            style={{ textDecoration: "none", color: "#222" }}
+          >
+            <Button onClick={handleClickClose} color="primary" autoFocus>
+              Yes
             </Button>
-            <Link
-              to="/login/"
-              style={{ textDecoration: "none", color: "#222" }}
-            >
-              <Button onClick={handleClickClose} color="primary" autoFocus>
-                Yes
-              </Button>
-            </Link>
-          </DialogActions>
-        </Dialog>
-      </List>
-    </div>
-  )
+          </Link>
+        </DialogActions>
+      </Dialog>
+    </List>
+  </div>
+)
 
   return (
-    <div className={classes.root}>
+      <Container maxWidth="lg">
+      <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar} elevation={0}>
         <Toolbar>
           <Box>
@@ -268,7 +263,9 @@ export default function DashboardNavbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <Link to="/profile" style={{ textDecoration: "none", color: "#222" }}>
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  </Link>
                 <MenuItem onClick={handleClose}>Settings</MenuItem>
               </Menu>
             </div>
@@ -308,5 +305,17 @@ export default function DashboardNavbar() {
         </Hidden>
       </nav>
     </div>
+        <Hidden smDown>
+          <Box mt={16} ml={16}>
+           <GroupTab/>
+          </Box>
+        </Hidden>
+        <Hidden smUp>
+          <Box mt={16}>
+            {/* <GroupSection /> */}
+            {/* <DashboardCreatePost /> */}
+          </Box>
+        </Hidden>
+      </Container>
   )
 }
