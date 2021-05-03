@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Container, makeStyles, Hidden } from "@material-ui/core"
+import { Box, Container, Hidden } from "@material-ui/core"
 import DashboardNavbar from "../components/dashboardNavbar"
 import GroupSection from "../components/groupSection"
 import DashboardCreatePost from "../components/dashboardCreatePost"
