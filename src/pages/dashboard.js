@@ -33,9 +33,7 @@ import GroupsIcon from "../assets/icons/groups-icon.svg"
 import SignOutIcon from "../assets/icons/sign-out-icon.svg"
 import { useDownloadMenuStyles } from "@mui-treasury/styles/menu/download"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
-import GroupTab from "../components/groupSection"
 import DashboardTab from "../components/dashboardCreatePost"
-import UserProfile from "../components/userProfile"
 
 const drawerWidth = 200
 
