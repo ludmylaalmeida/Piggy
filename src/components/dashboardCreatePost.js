@@ -9,11 +9,16 @@ import {
   Divider,
   Modal,
   Button,
+  Link,
+  TextField,
 } from "@material-ui/core"
 import PostMedia from "../assets/images/create-post.svg"
 import UserIcon from "../assets/images/user-icon.svg"
 import CloseIcon from "../assets/icons/close.svg"
-import { Link } from "gatsby"
+import AccountIcon from "@material-ui/icons/AccountCircle"
+import BookmarkIcon from "../assets/icons/bookmark-icon.svg"
+import HorizontalIcon from "../assets/icons/horizontal-icon.svg"
+import PostMediaExample from "../assets/images/post-media-example.svg"
 
 function rand() {
   return Math.round(Math.random() * 20) - 10
@@ -77,6 +82,7 @@ const useStyles = makeStyles(theme => ({
   },
   paperWrap: {
     marginLeft: theme.spacing(3),
+    marginBottom: theme.spacing(4),
     display: "flex",
     flexWrap: "wrap",
     "& > *": {
@@ -85,12 +91,43 @@ const useStyles = makeStyles(theme => ({
       height: theme.spacing(10),
     },
   },
+  oldPostPaperWrap: {
+    marginLeft: theme.spacing(3),
+    marginBottom: theme.spacing(4),
+    display: "flex",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(1),
+      width: theme.spacing(80),
+      height: theme.spacing(18),
+    },
+  },
+  oldPostPaperWrap2: {
+    marginLeft: theme.spacing(3),
+    marginBottom: theme.spacing(4),
+    display: "flex",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(1),
+      width: theme.spacing(80),
+      height: theme.spacing(45),
+    },
+  },
   modalWrap: {
     position: "absolute",
     width: 500,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+  },
+  oldPostUserName: {
+    marginLeft: theme.spacing(3),
+    fontWeight: 700,
+  },
+  oldPostContent: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(3),
+    fontSize: 12,
   },
   dividerWrap: {
     padding: theme.spacing(0, 0, 0),
@@ -108,6 +145,22 @@ const useStyles = makeStyles(theme => ({
   addPostMediaButton: {
     marginTop: theme.spacing(1),
     marginLeft: theme.spacing(3),
+  },
+  divider: {
+    backgroundColor: "#F3F3F3",
+    color: "#CEC8C8",
+    marginLeft: "-30px",
+    marginRight: "-30px",
+  },
+  footerWrap: {
+    marginLeft: theme.spacing(3),
+    marginRight: theme.spacing(0),
+  },
+  postFooter: {
+    fontSize: 12,
+  },
+  postFooterMediaWrap: {
+    width: 24,
   },
   primaryButton: {
     textTransform: "none",
@@ -161,11 +214,20 @@ export default function DashboardCreatePost() {
       <Box pt={1} display="flex">
         <Grid container spacing={2}>
           <Grid item xs={2}>
-            <UserIcon className={classes.modalUserIconWrap} />
+            <AccountIcon
+              className={classes.modalUserIconWrap}
+              color="primary"
+              style={{ fontSize: 36 }}
+            />
           </Grid>
           <Grid item xs={7}>
             <p className={classes.modalNameWrap}>Alisha Woodwards</p>
-            <p>What's on your mind?</p>
+            <TextField
+              id="standard-multiline-static"
+              multiline
+              rows={4}
+              placeholder="What's on your mind"
+            />
             <div className={classes.createPostTempSpace}></div>
           </Grid>
         </Grid>
@@ -217,7 +279,11 @@ export default function DashboardCreatePost() {
                     <Grid container spacing={1}>
                       <Grid item xs={1}>
                         <Box flexGrow={1}>
-                          <UserIcon className={classes.userIconWrap} />
+                          <AccountIcon
+                            className={classes.userIconWrap}
+                            color="primary"
+                            style={{ fontSize: 36 }}
+                          />
                         </Box>
                       </Grid>
                       <Grid item xs={11}>
@@ -239,6 +305,125 @@ export default function DashboardCreatePost() {
                           </div>
                           <PostMedia className={classes.postMediaWrap} />
                         </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Paper>
+                <Paper className={classes.oldPostPaperWrap} elevation={0}>
+                  <Box pt={1} display="flex">
+                    <Grid container spacing={1}>
+                      <Grid item xs={1}>
+                        <Box flexGrow={1}>
+                          <AccountIcon
+                            className={classes.userIconWrap}
+                            color="primary"
+                            style={{ fontSize: 36 }}
+                          />
+                        </Box>
+                      </Grid>
+                      <Grid item xs={11}>
+                        <Box flexGrow={1} className={classes.oldPostUserName}>
+                          Matthew Brown
+                        </Box>
+                      </Grid>
+                      <Grid
+                        container
+                        spacing={1}
+                        className={classes.oldPostContent}
+                      >
+                        <Grid item xs={12}>
+                          <Box flexGrow={1}>
+                            <Typography variant="p">
+                              The finance team is hiring at Drift. To learn more
+                              about our Staff Accountant role check this out:
+                            </Typography>
+                            <br />
+                            <br />
+                            <Typography variant="p">
+                              <Link to="https://lnkd.in/eXPhZvk">
+                                https://lnkd.in/eXPhZvk
+                              </Link>
+                            </Typography>
+                            <br />
+                            <br />
+                            <Typography variant="p">
+                              I'm an #accountant still recovering from
+                              #publicaccounting
+                            </Typography>
+                            <br />
+                            <br />
+                            <Divider className={classes.divider} />
+                          </Box>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                  <Box pt={1} display="flex" style={{ height: "35px" }}>
+                    <Grid container spacing={1} className={classes.footerWrap}>
+                      <Grid item xs={2}>
+                        <Box flexGrow={1} className={classes.postFooter}>
+                          21 likes
+                        </Box>
+                      </Grid>
+                      <Grid item xs={2} className={classes.postFooter}>
+                        <Box flexGrow={1}>7 comments</Box>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Box flexGrow={1}></Box>
+                      </Grid>
+                      <Grid item xs={1}>
+                        <Box flexGrow={1}>
+                          <BookmarkIcon
+                            className={classes.postFooterMediaWrap}
+                          />
+                        </Box>
+                      </Grid>
+                      <Grid item xs={1}>
+                        <Box flexGrow={1}>
+                          <HorizontalIcon
+                            className={classes.postFooterMediaWrap}
+                          />
+                        </Box>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Paper>
+                <Paper className={classes.oldPostPaperWrap2} elevation={0}>
+                  <Box pt={1} display="flex">
+                    <Grid container spacing={1}>
+                      <Grid item xs={1}>
+                        <Box flexGrow={1}>
+                          <AccountIcon
+                            className={classes.userIconWrap}
+                            color="primary"
+                            style={{ fontSize: 36 }}
+                          />
+                        </Box>
+                      </Grid>
+                      <Grid item xs={11}>
+                        <Box flexGrow={1} className={classes.oldPostUserName}>
+                          Tiffany McDonald
+                        </Box>
+                      </Grid>
+                      <Grid
+                        container
+                        spacing={1}
+                        className={classes.oldPostContent}
+                      >
+                        <Grid item xs={12}>
+                          <Box flexGrow={1}>
+                            <Typography variant="p">
+                              Our Latest Weekly View: Why are Interest Rates
+                              Rising...and What Does it Mean for the Stock
+                              Market?
+                            </Typography>
+                            <PostMediaExample
+                              style={{ width: "500px", paddingBottom: "80px" }}
+                            />
+                            <br />
+                            <br />
+                          </Box>
+                        </Grid>
                       </Grid>
                     </Grid>
                   </Box>
