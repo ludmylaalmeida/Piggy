@@ -43,3 +43,15 @@ The main goal is to create a web-based application where people can interact and
 <p>The project manager will be responsible for creating and assigning tickets on GitHub, they will also be responsible for the project organization, weekly meetings on Discord, and helping team members to achieve their weekly goals.</p>
 <b>Programmer:</b>Nassika Dabel and Victoria Mom
 <p>The programmer will be responsible for developing the features, completing the tickets and participating in the meetings. If there is any impediment they must warn the project manager.</p>
+
+## Project Setup
+
+1. Clone this repository to your local machine.
+2. Install the latest version of [Node here](https://nodejs.org/en/download/) if you don't have it yet.
+3. After installing npm, from the terminal run `npm install -g gatsby-cli` (This will install the Gatsby CLI globally on your machine)
+4. Go to the root folder of this repo and run `npm install`.
+5. Start the server by running `npm start` or `gatsby develop`. This will start the local server with hot realoding enabled which will update the browser on code changes when saving.
+
+You can also refer to this [Gatsby Part Zero Tutorial](https://www.gatsbyjs.org/tutorial/part-zero/) <- This should help you to set up your environment fully, although the previous steps are just a simplified version of the steps on this tutorial!
+
+After following the previous steps, navigate to http://localhost:8000 and you should be able to see a simple header, with a picture of some Hack.Alumni. This means that you have successfully started the server locally.
